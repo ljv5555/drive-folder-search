@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css.css" />
+<link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="icon" href="images/drive-folder-search-icon-16.png" sizes="16x16" type="image/png" />
 <link rel="icon" href="images/drive-folder-search-icon-32.png" sizes="32x32" type="image/png" />
 <link rel="icon" href="images/drive-folder-search-icon-64.png" sizes="64x64" type="image/png" />
@@ -18,6 +18,7 @@ jQuery.noConflict();
 <script src="js/driveFolderSearch.js"></script>
 </head>
 <body>
+<div class="forkme"><a target="_blank" href="">Fork me on GitHub</a></div>
 <div class="logout">
 <span class="token"></span>
 <button onclick="logout();">logout</button>
@@ -29,11 +30,11 @@ This app is under development. Please check back weekly. The old version is avai
  
 
 <button type="button" style="display:none;" id="authorizeButton">Authorize</button>
-
-
+<div class="r"></div>
+ <!-- 
     <button class='baf' 
      type="button" 
-     onclick="googleDriveClient.showChildrenFolders(document.getElementById('flist'));">
+     onclick="window.googleDriveClient.showChildrenFolders(document.getElementById('flist'));">
      Show Children folders
     </button>
 
@@ -42,7 +43,7 @@ This app is under development. Please check back weekly. The old version is avai
   Init
 </button>
 <div id="flist"></div>
-
+-->
 </div> <!-- f1 pink -->
 
 <div class="listFoldersResult" style="display:none;background:silver;">Loading folder list...</div>

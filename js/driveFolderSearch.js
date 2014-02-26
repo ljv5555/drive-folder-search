@@ -1,5 +1,5 @@
 
-
+window['googleDriveClient']=null;
 
 var googleDriveClient = null;
 var driveClientInit = function()

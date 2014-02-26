@@ -50,7 +50,20 @@
         if(authResult && !authResult.error) 
         {
           // Access token has been successfully retrieved, requests can be sent to the API.
-          jQuery('.listFolders').slideDown();
+          setTimeout(
+        		  function()
+          {
+        	  jQuery('.listFoldersResult').slideDown();
+        	  window['googleDriveClient'] = new GoogleDriveClient();
+        	  window['googleDriveClient'].setToken(gapi.auth.getToken().access_token);
+        	  jQuery('.listFoldersResult').slideUp();
+        	  setTimeout(function(){
+        		  window['googleDriveClient'].showChildrenFolders(jQuery('.r')[0]);
+        	  },1000);
+        	  
+          },1000);
+        	
+        	//jQuery('.listFolders').slideDown();
         } 
         else 
         {
