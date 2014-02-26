@@ -1,0 +1,79 @@
+body{
+min-height:1800px;
+background-size:100% 2000px;
+background-repeat:no-repeat;
+font-family:arial;
+background:#444400;
+background: linear-gradient(#222222, #efefef, white, white, white, white); /* Standard syntax */
+
+}
+
+.token{
+margin:.2em 2em .2em .2em;
+padding:.2em 2em .2em .2em;
+border:1px solid grey;
+color:white;
+font-size:10px;
+}
+.token:before{
+content-text: token: 
+}
+
+.apitest{background:blue;color:white;cursor:pointer;margin:1em 1em 1em 1em;padding:1em 1em 1em 1em;display:none;}
+
+.logout{text-align:right;}
+
+.construction{
+color:red;
+border:0px solid red;
+font-size:16px;
+background:#ffeeee;
+margin:1em 1em 1em 1em;
+padding:1em 1em 1em 1em;
+-webkit-border-radius:.45em;
+-moz-border-radius:.45em;
+-ms-border-radius:.45em;
+-o-border-radius:.45em;
+border-radius:.45em;
+}
+.listFoldersResult table, .listFoldersResult td{
+border:01px solid silver;
+margin: .25em .25em .25em .25em;
+padding: .25em .25em .25em .25em;
+}
+.listFoldersResult table
+{
+  background:#def;
+}
+.f1div{
+background:#1111ff;
+color:white;
+cursor:pointer;
+margin:1em 1em 1em 1em;
+padding:1em 1em 1em 1em;
+-webkit-border-radius:.45em;
+-moz-border-radius:.45em;
+-ms-border-radius:.45em;
+-o-border-radius:.45em;
+border-radius:.45em;
+}
+.f1div * {
+-webkit-border-radius:1.65em;
+-moz-border-radius:1.65em;
+-ms-border-radius:1.65em;
+-o-border-radius:1.65em;
+border-radius:1.65em;
+padding:.5em .5em .5em .5em;
+margin:.5em .5em .5em .5em;
+}
+
+.f1div * {
+color:white;
+border: 0px solid silver;
+}
+
+.f1div > * { background: #7777ff; }
+.f1div > * > * { background: #9999ff; }
+.f1div > * > * > * { background: #7777ff; }
+.f1div > * > * > * > * { background: #5555ff; }
+.f1div > * > * > * > * > * { background: #3333ff; }

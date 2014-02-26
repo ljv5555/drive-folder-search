@@ -1,13 +1,52 @@
+<!doctype html>
 <html>
 <head>
-<script type="text/javascript" src="js/GoogleDrive.js"></script>
-
+<link rel="stylesheet" type="text/css" href="css.css" />
+<link rel="icon" href="images/drive-folder-search-icon-16.png" sizes="16x16" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-64.png" sizes="64x64" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-128.png" sizes="128x128" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-256.png" sizes="256x256" type="image/png" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script>
+jQuery.noConflict();
+</script>
+<script src="js/oauth2.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script src="js/listFiles.js"></script>
+<script src="js/driveFolderSearch.js"></script>
 </head>
 <body>
+<div class="logout">
+<span class="token"></span>
+<button onclick="logout();">logout</button>
+</div>
+<div class="construction">
+This app is under development. Please check back weekly. The old version is available <a href="https://sites.google.com/site/drivesearchbyfolder/">here</a>.
+</div>
+<div id="f1" class="f1div">
+ 
+
+<button type="button" style="display:none;" id="authorizeButton">Authorize</button>
 
 
+    <button class='baf' 
+     type="button" 
+     onclick="googleDriveClient.showChildrenFolders(document.getElementById('flist'));">
+     Show Children folders
+    </button>
+
+<button type="button" 
+  onclick="driveClientInit();jQuery('.baf').slideDown();">
+  Init
+</button>
+<div id="flist"></div>
+
+</div> <!-- f1 pink -->
+
+<div class="listFoldersResult" style="display:none;background:silver;">Loading folder list...</div>
+</div>
 
 </body>
-
-
 </html>
