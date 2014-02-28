@@ -21,7 +21,8 @@ jQuery.noConflict();
 <div class="forkme"><a target="_blank" href="">Fork me on GitHub</a></div>
 <div class="logout">
 <span class="token"></span>
-<button onclick="logout();">logout</button>
+<span class="user"></span>
+<button onclick="logout();setTimeout(function(){window.location.href=window.location.href;});">logout</button>
 </div>
 <div class="construction">
 This app is under development. Please check back weekly. The old version is available <a href="https://sites.google.com/site/drivesearchbyfolder/">here</a>.

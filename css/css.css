@@ -8,15 +8,18 @@ background: linear-gradient(#222222, #efefef, white, white, white, white); /* St
 
 }
 
-.token{
-margin:.2em 2em .2em .2em;
-padding:.2em 2em .2em .2em;
-border:1px solid grey;
-color:white;
-font-size:10px;
+.token, .logout .user{
+	margin:.2em 2em .2em .2em;
+	padding:.2em 2em .2em .2em;
+	border:0px solid grey;
+	color:white;
+	opacity:0.005;
+	font-size:6px;	
 }
-.token:before{
-content-text: token: 
+.logout .user{
+	opacity:1.0;
+	color:grey;
+	font-size:10px;
 }
 
 .apitest{background:blue;color:white;cursor:pointer;margin:1em 1em 1em 1em;padding:1em 1em 1em 1em;display:none;}
@@ -57,7 +60,7 @@ padding:1em 1em 1em 1em;
 -o-border-radius:.45em;
 border-radius:.45em;
 }
-.f1div * {
+.f1div *, button {
 -webkit-border-radius:1.65em;
 -moz-border-radius:1.65em;
 -ms-border-radius:1.65em;

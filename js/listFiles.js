@@ -1,13 +1,23 @@
+
+/**
+ * class: GoogleDriveClient
+ * @param access_token
+ * @returns
+ */
 function GoogleDriveClient(access_token) {
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
-	// https://content.googleapis.com/drive/v2/files?access_token=ya29.1.AADtN_UbSKkuxyynXEp_s1jANyOJB6-HQHATaBSEME-UcwlQRodBHzzxLlTAJ-f7
-
+	
 	
 	if (!jQuery) {
 		var error = 'Error: You must include jQuery to use this script.';
 		alert(error);
 		return error;
 	}
+	
+	/**
+	 * 
+	 * @returns
+	 */
     var getUrlParams = function() {
         var query = window.location.search;
         var re = /([^&=]+)=?([^&]*)/g;
@@ -34,29 +44,47 @@ function GoogleDriveClient(access_token) {
         return params;
     };
 
+    /**
+     * 
+     * @param o
+     * @returns
+     */
 	var log = function(o) {
 		try {
 			console.log(o);
 		} catch (e) {
 		}
 	};
-	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
-
+	
 	var atoken = null;
 	if (access_token) {
 		atoken = accessToken;
 		jQuery('.token').text(atoken);
 	}
 
+	/**
+	 * 
+	 */
 	this.getToken = function() {
 		return atoken;
 	}
+	/**
+	 * 
+	 */
 	this.setToken = function(t) {
 		atoken = t;
 		jQuery('.token').text(atoken);
 	}
 
-
+	/**
+	 * 
+	 * @param url
+	 * @param callback
+	 * @param errorCallback
+	 * @param requestParameters
+	 * @param doNotSend
+	 * @returns
+	 */
 	var getRequest = function(url, callback, errorCallback, requestParameters, doNotSend) {
 		var xhr = new XMLHttpRequest();
 		if (requestParameters) {
@@ -92,12 +120,12 @@ function GoogleDriveClient(access_token) {
 
 	/**
 	 * Synchronous get request
-	**/
+	 * @param urlToGet
+	 * @param parametersToUse
+	 * @returns
+	 */
 	var sGetRequest = function( urlToGet, parametersToUse )
 	{
-		console.log('sgetrequest:');
-		console.log(urlToGet);
-		console.log(parametersToUse);
 		if( !parametersToUse ){ parametersToUse = {}; }
 		var rtn = '';
 		try{
@@ -120,18 +148,15 @@ function GoogleDriveClient(access_token) {
 	};
 	
 	/**
-	  *
-	 **/
+	 * get info for a file by id
+	 * @param fileid
+	 * @returns
+	 */
 	var getFileItem = function(fileid)
 	{
 		var itemurl = driveFilesUrl + '/' + fileid;
 		return sGetJSON(itemurl);
 	};
-	/*
-	
-	googleDriveClient.getAllResultPages(function(p){console.log('success'+p.length);},function(p){console.log('error'+p);},{"q":"'root' in parents"},function(i){console.log('status: '+i.length);});
-	
-	*/
 	
 	this.sGetItems = function(url,params)
 		{
@@ -154,7 +179,14 @@ function GoogleDriveClient(access_token) {
 			
 		};
 
-	
+	/**
+	 * 
+	 * @param success
+	 * @param error
+	 * @param progressCb
+	 * @param parametersToUse
+	 * @returns
+	 */
 	var getAllResultPages = function( success, error, progressCb, parametersToUse )
 	{
 		
@@ -182,8 +214,24 @@ function GoogleDriveClient(access_token) {
 		success(getItems('https://content.googleapis.com/drive/v2/files',parametersToUse));
 	};
 	
+	var userShown = false;
+	
 	this.showChildrenFolders = function(el)
 	{
+		if(!userShown)
+		{
+			try{
+				setTimeout(function(){
+			var dfsr = sGetRequest(driveFilesUrl+'/root',{"fields":"owners(displayName)"});
+			var dfsro = JSON.parse(dfsr);
+			userShown=true;
+			var dfsro_o=dfsro.owners[0].displayName;
+			jQuery('.logout .user').text(dfsro_o);
+			// .owners[0].displayName
+				},5000);
+			}catch(ex1x){}
+		}
+		
 		
 		var jqel = jQuery(el);
 		jqel.empty();
