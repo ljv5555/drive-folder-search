@@ -84,3 +84,4 @@ function logout()
 	var w = window.open(u);
 	setTimeout(function(){w.close();window.location.href = window.location.href;},1000);
 }
+
