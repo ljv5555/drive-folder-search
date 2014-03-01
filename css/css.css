@@ -129,10 +129,9 @@ background: linear-gradient(grey,silver,silver,grey);
 */
 .forkme{
     padding:.25em 5em .25em 5em;
-    position:static;
     z-index:22;
-    margin-left:-6em;
-    margin-top:4em;
+    left:-6em;
+    top:4em;
     box-shadow: 0px 0px 10px 1px rgba(140,150,255,200);
     display:absolute;
     transform:rotate(-45deg);
