@@ -141,6 +141,7 @@ background: linear-gradient(grey,silver,silver,grey);
     -moz-transform:rotate(-45deg);
     -o-transform:rotate(-45deg);
     opacity:0.8;
+    margin-bottom:-4em;
 }
 
 
