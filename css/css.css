@@ -141,8 +141,31 @@ background: linear-gradient(grey,silver,silver,grey);
     -o-transform:rotate(-45deg);
     opacity:0.8;
     
+
+position: fixed;
+padding: .25em 5em .25em 5em;
+z-index: 22;
+left: -6em;
+top: 5em;
+box-shadow: 0px 0px 10px 1px rgba(140,150,255,200);
+display: absolute;
+transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+-ms-transform: rotate(-45deg);
+-moz-transform: rotate(-45deg);
+-o-transform: rotate(-45deg);
+opacity: 0.77;
 }
-
-
+.forkme {
+-webkit-transition: all 1s;
+-moz-transition: all 1s;
+-ms-transition: all 1s;
+-o-transition: all 1s;
+background: -webkit-linear-gradient(grey,silver,silver,grey);
+background: -ms-linear-gradient(grey,silver,silver,grey);
+background: -moz-linear-gradient(grey,silver,silver,grey);
+background: -o-linear-gradient(grey,silver,silver,grey);
+background: linear-gradient(grey,silver,silver,grey);
+}
 
 
