@@ -168,4 +168,9 @@ background: -o-linear-gradient(grey,silver,silver,grey);
 background: linear-gradient(grey,silver,silver,grey);
 }
 
-
+.update{
+    color: #eee;
+    font-family: courier new;
+    text-decoration:none;
+    font-size:0.25em;
+}
