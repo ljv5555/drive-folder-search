@@ -170,7 +170,6 @@ background: linear-gradient(grey,silver,silver,grey);
 
 .update, .update a,.update a:visited, .update a:active, .update a:hover{
     color: #eee;
-    font-family: courier new;
     text-decoration:none;
-    font-size:0.25em;
+    font-size:0.75em;
 }
