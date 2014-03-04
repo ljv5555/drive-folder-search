@@ -292,7 +292,7 @@ function GoogleDriveClient(access_token) {
 			fge.attr('action','getChildFolders');
 		}
 		
-		fge = jQuery("*[action=getChildFolders']");
+		fge = jQuery("*[action='getChildFolders']");
 		if(fge && fge.length && fge.length>0 )
 		{
 			fge.attr('action','');
