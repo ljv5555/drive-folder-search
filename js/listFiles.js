@@ -297,7 +297,7 @@ function GoogleDriveClient(access_token) {
 		{
 			fge.attr('action','gettingChildFolders');
 			var fgefc = fge.children().last();
-			var qobj = {"q":" '"+fge[0].id+"' in parents "};
+			var qobj = {"q":" '"+fge[0].id+"' in parents AND mimeType='application/vnd.google-apps.folder' ","fields":"title"};
 			fgefc.text(JSON.stringify(qobj));
 			var resp = sGetJSON(driveFilesUrl,qobj);
 			fgefc.text(JSON.stringify(resp));
