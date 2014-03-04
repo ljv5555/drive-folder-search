@@ -300,7 +300,20 @@ function GoogleDriveClient(access_token) {
 			var qobj = {"q":" '"+fge[0].id+"' in parents AND mimeType='application/vnd.google-apps.folder' "};
 			fgefc.text(JSON.stringify(qobj));
 			var resp = sGetJSON(driveFilesUrl,qobj);
-			fgefc.text(JSON.stringify(resp));
+			var items = resp.items;
+			if(items && items.length && items.length>0)
+			{
+				fgefc.text('');
+				for(var i = 0;i<items.length;i++)
+				{
+					var item = $('<div/>');
+					item.attr('id',items[i].id);
+					item.text(items[i].title);
+					fgefc.append(item);
+				}
+				
+			}
+			//fgefc.text(JSON.stringify(resp));
 		}
 		
 	};
