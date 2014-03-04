@@ -1,4 +1,3 @@
-
 /**
  * class: GoogleDriveClient
  * @param access_token
@@ -290,9 +289,19 @@ function GoogleDriveClient(access_token) {
 			if(!name1o.title){fget.text(JSON.stringify(name1o));}
 			else{fget.text(name1o.title);}
 			
-			fge.attr('action','');
-			fgec.action='getChildFolders';
+			fge.attr('action','getChildFolders');
 		}
+		
+		fge = jQuery("*[action=getChildFolders']");
+		if(fge && fge.length && fge.length>0 )
+		{
+			fge.attr('action','');
+			var fgefc = fge.find("*[type='folderChilderen']");
+			var qobj = {"q":" '"+fge[0].id+"' in parents "};
+			var resp = sGetJSON(driveFilesUrl,qobj);
+			fgefc.first().text(JSON.stringify(resp));
+		}
+		
 	};
 	
 	var threadInt = setInterval(pthread, 1000);
