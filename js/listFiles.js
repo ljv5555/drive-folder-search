@@ -296,8 +296,9 @@ function GoogleDriveClient(access_token) {
 		if(fge && fge.length && fge.length>0 )
 		{
 			fge.attr('action','');
-			var fgefc = fge.find("*[type='folderChilderen']");
+			var fgefc = fge.find(".folderChilderen");
 			var qobj = {"q":" '"+fge[0].id+"' in parents "};
+			fgefc.first().text(JSON.stringify(qobj));
 			var resp = sGetJSON(driveFilesUrl,qobj);
 			fgefc.first().text(JSON.stringify(resp));
 		}
