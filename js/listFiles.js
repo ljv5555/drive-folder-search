@@ -306,7 +306,7 @@ function GoogleDriveClient(access_token) {
 				fgefc.text('');
 				for(var i = 0;i<items.length;i++)
 				{
-					var item = $('<div/>');
+					var item = jQuery('<div/>');
 					item.attr('id',items[i].id);
 					item.text(items[i].title);
 					fgefc.append(item);
