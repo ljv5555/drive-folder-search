@@ -308,7 +308,16 @@ function GoogleDriveClient(access_token) {
 				{
 					var item = jQuery('<div/>');
 					item.attr('id',items[i].id);
-					item.text(items[i].title);
+					var itemt = jQuery('<div/>');
+					itemt.addClass('folderTitle').attr('type','folderTitle');
+					itemt.text(items[i].title);
+					var itemc = jQuery('<div/>');
+					itemt.addClass('folderChildren').attr('type','folderChildren');					
+					item.append(itemt);
+					item.append(itemc);
+					/*
+					<div class="root folderItem" id="root" action=""><div class="folderTitle" type="folderTitle">My Drive</div><div class="folderChildren" type="folderChildren"><div id="0B9ICicDg0C8nbGNKb0toYlJ6ejQ" action="">testfolder2</div><div id="0B9ICicDg0C8nZUZic0h2Wi1iWGM" action="">testfolder1</div></div></div>
+					*/
 					item.attr('action','getChildFolders');
 					fgefc.append(item);
 				}
