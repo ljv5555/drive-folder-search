@@ -128,16 +128,20 @@ function GoogleDriveClient(access_token) {
 		if( !parametersToUse ){ parametersToUse = {}; }
 		var rtn = '';
 		try{
+		var ls = 'running sGetRequest("'+urlToGet+'",'+JSON.stringify(parametersToUse)+");");
 		rtn = jQuery.ajax({
 		   url:urlToGet,
 		   data:parametersToUse,
 		   async:false,
 		   headers:{'Authorization': ('Bearer ' + gapi.auth.getToken().access_token)}
 		   }).responseText;
+		   log('returning: ');
+		   log(''+rtn);
 		}catch(e)
 		{
 			//if(error){error('Error: '+e.message);}
-			log('Error: '+e.message);
+			log('Error: ');
+			log(''+e.message);
 		}
 		return rtn;
 	};
