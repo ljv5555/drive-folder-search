@@ -309,7 +309,7 @@ function GoogleDriveClient(access_token) {
 					var item = jQuery('<div/>');
 					item.attr('id',items[i].id);
 					item.text(items[i].title);
-					fge.attr('action','getChildFolders');
+					item.attr('action','getChildFolders');
 					fgefc.append(item);
 				}
 				
