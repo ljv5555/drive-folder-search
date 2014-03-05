@@ -309,11 +309,14 @@ function GoogleDriveClient(access_token) {
 					var item = jQuery('<div/>');
 					item.attr('id',items[i].id);
 					item.text(items[i].title);
+					fge.attr('action','getChildFolders');
 					fgefc.append(item);
 				}
 				
 			}
 			//fgefc.text(JSON.stringify(resp));
+			fge.attr('action','');
+			
 		}
 		
 	};
