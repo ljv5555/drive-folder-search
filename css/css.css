@@ -82,11 +82,14 @@ color:white;
 border: 0px solid silver;
 }
 
+.f1div * {background: rgba(100,120,140,160);}
 .f1div > * { background: #7777ff; }
 .f1div > * > * { background: #9999ff; }
 .f1div > * > * > * { background: #7777ff; }
+/*
 .f1div > * > * > * > * { background: #5555ff; }
 .f1div > * > * > * > * > * { background: #3333ff; }
+*/
 
 .forkme a,.forkme a:visited, .forkme a:active, .forkme a:hover{
     color: blue;
