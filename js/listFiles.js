@@ -128,7 +128,7 @@ function GoogleDriveClient(access_token) {
 		if( !parametersToUse ){ parametersToUse = {}; }
 		var rtn = '';
 		try{
-		var ls = 'running sGetRequest("'+urlToGet+'",'+JSON.stringify(parametersToUse)+");");
+		log('running sGetRequest("'+urlToGet+'",'+JSON.stringify(parametersToUse)+");");
 		rtn = jQuery.ajax({
 		   url:urlToGet,
 		   data:parametersToUse,
