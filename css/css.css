@@ -88,11 +88,12 @@ border: 0px solid silver;
 .f1div > * > * > * { background: #5050ff; }
 .f1div > * > * > * > * { background: #4040ff; }
 .f1div > * > * > * > * div { 
-	
+	background: #3030ff; 
 	border:1px solid silver;
+	color:grey;
 	display:block;
 	padding-left:5px;
-	padding-right:5px;
+	padding-right:5px !important;
 }
 /*
 .f1div > * > * > * > * > * { background: #3030ff; }
