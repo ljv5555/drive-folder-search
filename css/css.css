@@ -191,3 +191,8 @@ background: linear-gradient(grey,silver,silver,grey);
     text-decoration:none;
     font-size:0.75em;
 }
+
+#plusone, #plusone * {
+height: 50px;
+padding-top: 15px;
+}
