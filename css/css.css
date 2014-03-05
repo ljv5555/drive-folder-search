@@ -82,7 +82,7 @@ color:white;
 border: 0px solid silver;
 }
 
-.f1div * {background: rgba(100,120,140,160);}
+.f1div * {background: rgba(200,220,250,220);}
 .f1div > * { background: #7777ff; }
 .f1div > * > * { background: #9999ff; }
 .f1div > * > * > * { background: #7777ff; }
