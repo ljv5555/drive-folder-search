@@ -84,17 +84,17 @@ border: 0px solid silver;
 
 .f1div * {background: rgba(200,220,250,220);}
 .f1div > * { background: #7070ff; }
-.f1div > * > * { background: #7878ff; }
-.f1div > * > * > * { background: #8080ff; }
+.f1div > * > * { background: #8888ff; }
+.f1div > * > * > * { background: #7070ff; }
 .f1div > * > * > * > * { background: #8888ff; }
 .f1div > * > * > * > * > * { background: #3030ff; }
-.f1div > * > * > * > * > * > * { background: #3838ff; }
-.f1div > * > * > * > * > * > * > * { background: #4040ff; }
-.f1div > * > * > * > * > * > * > * > * { background: #4848ff; }
-.f1div > * > * > * > * > * > * > * > * > * { background: #5050ff; }
-.f1div > * > * > * > * > * > * > * > * > * > * { background: #5858ff; }
-.f1div > * > * > * > * > * > * > * > * > * > * > * { background: #6060ff; }
-.f1div > * > * > * > * > * > * > * > * > * > * > * > * { background: #6868ff; }
+.f1div > * > * > * > * > * > * { background: #5050ff; }
+.f1div > * > * > * > * > * > * > * { background: #3838ff; }
+.f1div > * > * > * > * > * > * > * > * { background: #5858ff; }
+.f1div > * > * > * > * > * > * > * > * > * { background: #4040ff; }
+.f1div > * > * > * > * > * > * > * > * > * > * { background: #7070ff; }
+.f1div > * > * > * > * > * > * > * > * > * > * > * { background: #4848ff; }
+.f1div > * > * > * > * > * > * > * > * > * > * > * > * { background: #7878ff; }
 
 
 .forkme a,.forkme a:visited, .forkme a:active, .forkme a:hover{
