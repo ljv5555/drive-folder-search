@@ -90,8 +90,8 @@ border: 0px solid silver;
 .f1div > * > * > * > * div { 
 	background: #3030ff; 
 	border:1px solid silver;
-	color:grey;
-	display:table-cell;
+	color:white;
+	display:table;
 	padding-left:5px;
 	padding-right:5px !important;
 }
