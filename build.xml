@@ -25,5 +25,8 @@
             <echo>build.xml: target: copyToServer</echo>
     </target>
 
+    <target name="test">
+            <echo>build.xml: target: test</echo>
+    </target>
 
 </project>
