@@ -7,19 +7,28 @@
 <script src="sqlite.js"></script>
 <script src="dbsql.js"></script>
 <script>
-function log_o(o){try{console.log(o);}catch(e){}}
+function log_o(o){
+      try{console.log(o);}catch(e){}
+      try{document.getElementById('pre1').innerHTML+=("\r\n\r\n"+o);}catch(e2){}
+      };
 function showAlbums()
 {
-      document.getElementById('pre1').innerHTML='Working...';
       var tmpf = function()
       {
-        var rtn = '';
+        log_o('Working...');
         try{
               var s = getDbSql();
+              log_o('got sql');
               var db = SQL.open();
+              log_o('opened db');
               var tmpdata = db.exec(s);
-              rtn = db.exec("select * from Albums;");
-        }catch(ex1){log_o(ex1);rtn = "Error: \r\n"+ex1.message;}
+              log_o('defined test db');
+              var q1 = " select * from Albums ; ";
+              var rtn = db.exec(q1);
+              log_o('ran query: '+q1);
+              log_o("output: ");
+              log_o(rtn);
+        }catch(ex1){log_o(ex1);rtn += "\r\nError: \r\n"+ex1.message;}
         document.getElementById('pre1').innerHTML=rtn;
       };
   setTimeout(tmpf,100);
