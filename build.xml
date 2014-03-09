@@ -15,7 +15,14 @@
           target: default              
          ================================= -->
     <target name="default" description="search google drive by folder and subfolder">
-            <echo>build.xml</echo>
+            <echo>build.xml: target: default</echo>
+    </target>
+
+    <!-- ================================= 
+          target: copyToServer              
+         ================================= -->
+    <target name="default" description="search google drive by folder and subfolder">
+            <echo>build.xml: target: copyToServer</echo>
     </target>
 
 
