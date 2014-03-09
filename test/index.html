@@ -11,7 +11,10 @@ function log_o(o){
       try{console.log(o);}catch(e){}
       try{document.getElementById('pre1').innerHTML+=("\r\n\r\n"+o);}catch(e2){}
       };
-function showAlbums()
+
+
+
+function defineDb()
 {
       var tmpf = function()
       {
@@ -22,8 +25,20 @@ function showAlbums()
               var db = SQL.open();
               log_o('opened db');
               var tmpdata = db.exec(s);
-              log_o('defined test db');
-              var q1 = " select * from Albums ; ";
+              log_o('defined test db:\n'+JSON.stringify(tmpdata));
+        }catch(ex1){log_o(ex1);rtn += "\r\nError: \r\n"+ex1.message;}
+      };
+  setTimeout(tmpf,100);
+}
+function showAlbums()
+{
+      var tmpf = function()
+      {
+        log_o('Working...');
+        try{
+              var db = SQL.open();
+              log_o('opened db to show albums');
+              var q1 = " select * from Album ; ";
               var rtn = db.exec(q1);
               log_o('ran query: '+q1);
               log_o("output: ");
@@ -35,6 +50,7 @@ function showAlbums()
 </script>
 </head>
 <body>
+<p><button type="button" onclick="defineDb();">Define DB</button></p>
 <p><button type="button" onclick="showAlbums();">Show Albums</button></p>
 <p><pre id="pre1"></pre></p>
 </body>
