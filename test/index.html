@@ -30,7 +30,7 @@ function defineDb()
               var rtn = db.exec(q1);
               log_o('ran query: '+q1);
               log_o("output: ");
-              log_o(JSON.stringify(rtn));
+              rtn.every(function(o){log_o(JSON.stringify(o));});
         }catch(ex1){log_o('error: '+JSON.stringify(ex1));log_o(ex1);}
       };
   setTimeout(tmpf,100);
