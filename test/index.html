@@ -20,15 +20,20 @@ function defineDb()
       {
         log_o('Working...');
         try{
-              var s = ["create table Album(name,artist);","insert into \"Album\" Values('name1','artist1');"];
+              var s = getDbSql();
               log_o('got sql');
               var db = SQL.open();
               log_o('opened db');
-              var tmpdata = db.exec(s[0]);
+              var tmpdata = db.exec(s);
               log_o('defined test db:\n'+JSON.stringify(tmpdata));
-              tmpdata = db.exec(s[1]);
+              tmpdata = db.dump();
+              log_o('db dump:\n'+JSON.stringify(tmpdata));
               log_o('inserted row:\n'+JSON.stringify(tmpdata));
-              
+              var q1 = " select * from \"Album\" ; ";
+              var rtn = db.exec(q1);
+              log_o('ran query: '+q1);
+              log_o("output: ");
+              log_o(rtn);
         }catch(ex1){log_o(ex1);rtn += "\r\nError: \r\n"+ex1.message;}
       };
   setTimeout(tmpf,100);
