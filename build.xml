@@ -11,12 +11,11 @@
     <description>
             search google drive by folder and subfolder
     </description>
-
     <!-- ================================= 
           target: default              
          ================================= -->
     <target name="default" description="search google drive by folder and subfolder">
-        
+            <echo>build.xml</echo>
     </target>
 
 
