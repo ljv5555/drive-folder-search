@@ -34,7 +34,7 @@ function defineDb()
               //log_o('ran query: '+q1);
               //log_o("output: ");
               //log_o(rtn);
-        }catch(ex1){log_o('error: '+JSON.stringify(ex1));}
+        }catch(ex1){log_o('error: '+JSON.stringify(ex1));log_o(ex1);}
       };
   setTimeout(tmpf,100);
 }
