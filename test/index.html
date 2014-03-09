@@ -24,8 +24,11 @@ function defineDb()
               log_o('got sql');
               var db = SQL.open();
               log_o('opened db');
-              var tmpdata = db.exec(s);
+              var tmpdata = db.exec(s[0]);
               log_o('defined test db:\n'+JSON.stringify(tmpdata));
+              tmpdata = db.exec(s[1]);
+              log_o('inserted row:\n'+JSON.stringify(tmpdata));
+              
         }catch(ex1){log_o(ex1);rtn += "\r\nError: \r\n"+ex1.message;}
       };
   setTimeout(tmpf,100);
