@@ -20,7 +20,7 @@ function defineDb()
       {
         log_o('Working...');
         try{
-              var s = ["create table Album(name,artist);","insert into Album('name1','artist1');"];
+              var s = ["create table Album(name,artist);","insert into \"Album\" Values('name1','artist1');"];
               log_o('got sql');
               var db = SQL.open();
               log_o('opened db');
