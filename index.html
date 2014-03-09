@@ -20,10 +20,6 @@
 <script>
 jQuery.noConflict();
 </script>
-<script src="js/oauth2.js"></script>
-<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-<script src="js/listFiles.js"></script>
-<script src="js/driveFolderSearch.js"></script>
 </head>
 <body>
 <div class="forkme">
@@ -35,40 +31,9 @@ jQuery.noConflict();
     async="true">
         
     </script>
-<span class="update">
-  <a href="https://script.google.com/macros/s/AKfycbymNLUj1wJWfJyw9amhXw_VMSTX_SaF_OqW3WjSXwA/dev" target="_blank">
-    Update from GitHub
-  </a>
-</span>
-<span class="token"></span>
-<span class="user"></span>
-<button onclick="logout();setTimeout(function(){window.location.href=window.location.href;});">logout</button>
-</div>
-<div class="construction">
-This app is under development. Please check back weekly. The old version is available <a href="https://sites.google.com/site/drivesearchbyfolder/">here</a>.
-</div>
 <div id="f1" class="f1div">
  
-
-<button type="button" style="display:none;" id="authorizeButton">Authorize</button>
-<div class="r"></div>
- <!-- 
-    <button class='baf' 
-     type="button" 
-     onclick="window.googleDriveClient.showChildrenFolders(document.getElementById('flist'));">
-     Show Children folders
-    </button>
-
-<button type="button" 
-  onclick="driveClientInit();jQuery('.baf').slideDown();">
-  Init
-</button>
-<div id="flist"></div>
--->
-</div> <!-- f1 pink -->
-
-<div class="listFoldersResult" style="display:none;background:silver;">Loading folder list...</div>
-</div>
-
+<h3>drive-folder-search</h3>
+<div>Full-Text Search of google drive within specified folder and subfolders. </div>
 </body>
 </html> 
