@@ -1,10 +1,13 @@
 <!doctype html>
 <html>
 <head>
-
+<style>
+      pre{   padding:5px 5px 5px 5px;margin:5px 5px 5px 5px;border:5px solid blue;    }
+</style>
 <script src="sqlite.js"></script>
 <script src="dbsql.js"></script>
 <script>
+function log_o(o){try{console.log(o);}catch(e){}}
 function showAlbums()
 {
       document.getElementById('pre1').innerHTML='Working...';
@@ -16,7 +19,7 @@ function showAlbums()
               var db = SQL.open();
               var tmpdata = db.exec(s);
               rtn = db.exec("select * from Albums;");
-        }catch(ex1){rtn = "Error: \r\n"+ex1.message;}
+        }catch(ex1){log_o(ex1);rtn = "Error: \r\n"+ex1.message;}
         document.getElementById('pre1').innerHTML=rtn;
       };
   setTimeout(tmpf,100);
