@@ -41,7 +41,7 @@ function showAlbums()
         try{
               var db = SQL.open();
               log_o('opened db to show albums');
-              var q1 = " select * from Album ; ";
+              var q1 = " select * from \"Album\" ; ";
               var rtn = db.exec(q1);
               log_o('ran query: '+q1);
               log_o("output: ");
