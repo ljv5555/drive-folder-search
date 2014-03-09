@@ -7,14 +7,16 @@
 <script>
 function showAlbums()
 {
-      var rtn = '';     
       document.getElementById('pre1').innerHTML='Working...';
       var tmpf = function()
       {
-        var s = getDbSql();
-        var db = SQL.open();
-        var tmpdata = db.exec(s);
-        rtn = db.exec("select * from Albums;");
+        var rtn = '';
+        try{
+              var s = getDbSql();
+              var db = SQL.open();
+              var tmpdata = db.exec(s);
+              rtn = db.exec("select * from Albums;");
+        }catch(ex1){rtn = "Error: \r\n"+ex1.message;}
         document.getElementById('pre1').innerHTML=rtn;
       };
   setTimeout(tmpf,100);
