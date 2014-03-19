@@ -281,6 +281,7 @@ function GoogleDriveClient(access_token) {
 	var pthread = function()
 	{
 		var fge = jQuery("*[action='getFolderName']").first();
+		var done=false;
 		if(fge && fge.length && fge.length>0 )
 		{
 			fge.removeClass('getFolderName');
@@ -294,10 +295,13 @@ function GoogleDriveClient(access_token) {
 			else{fget.text(name1o.title);}
 			
 			fge.attr('action','getChildFolders');
+			done=true;
 		}
 		
-		fge = jQuery("*[action='getChildFolders']");
-		if(fge && fge.length && fge.length>0 )
+		
+		fge = jQuery("*[action='getChildFolders']").first();
+		
+		if((!done) && fge && fge.length && fge.length>0 )
 		{
 			fge.attr('action','gettingChildFolders');
 			var fgefc = fge.children().last();
@@ -328,12 +332,12 @@ function GoogleDriveClient(access_token) {
 				
 			}
 			//fgefc.text(JSON.stringify(resp));
-			fge.attr('action','');
-			
+			fge.attr('action','listFiles');
+			done=true;
 		}
 		
 	};
 	
-	var threadInt = setInterval(pthread, 1000);
+	var threadInt = setInterval(pthread, 5000);
 	
 } // end of class
