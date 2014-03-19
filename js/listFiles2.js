@@ -179,7 +179,7 @@ function GoogleDriveClient(access_token) {
 	{
 		return allItemsPages;
 	};
-	this.getAllItems()=function()
+	this.getAllItems = function()
 	{
 		var allitems = [];
 		if(allItemsPages && allItemsPages.length && (allItemsPages.length>0))
