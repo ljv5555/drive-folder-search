@@ -116,6 +116,19 @@ function GoogleDriveClient(access_token) {
 		return xhr;
 	};
 
+	/**
+	 * 
+	 * @param url
+	 * @param callback
+	 * @param errorCallback
+	 * @param requestParameters
+	 * @param doNotSend
+	 * @returns
+	 */
+	var getJSON = function(url, callback, errorCallback, requestParameters, doNotSend) 
+	{
+		return getRequest(url, function(e){callback(e)}, errorCallback, requestParameters, doNotSend);
+	};
 
 	/**
 	 * Synchronous get request
@@ -197,9 +210,30 @@ function GoogleDriveClient(access_token) {
 	};
 	
 //	var ispageworking = false;
-	var getNextPage = function()
+	var getNextPage = function(r)
 	{
-		
+		allItemsPages.push(r);
+		if(r.nextLink)
+		{
+			getJSON(r.nextLink,function(r2){getNextPage(r2);});
+		}
 	};
+
+	this.getAllItemsPagesForFolders=function(folderid)
+	{
+		if(!folderid){folderid='root';}
+		var q = {"q":" '"+folderid+"' in parents AND mimeType='application/vnd.google-apps.folder' "};
+		getJSON(driveFilesUrl,function(r){getNextPage(r);},false,q);		
+	};
+		// if(allItemsPages && allItemsPages.length && allItemsPages.length>0)
+		// {
+		// 	var lastItemsPage = allItemsPages[allItemsPages.length-1];
+		// 	var u = lastItemsPage.nextLink;
+		// 	if(u)
+		// 	{
+		// 		var cb = function(r){getJSON();};	
+				
+		// 	}
+		// }
 
 } // end of class
