@@ -161,183 +161,45 @@ function GoogleDriveClient(access_token) {
 		return sGetJSON(itemurl);
 	};
 	
-	this.sGetItems = function(url,params)
-		{
-		        log('calling getrequest to get tmpr...');
-			var tmpr = sGetJSON(url,params);
-			log(tmpr);
-			var items = tmpr.items;
-			console.log('tmpr1, length='+items.length);
-			if(progressCb){ progressCb(items); }
-			while(tmpr.nextPageToken)
-			{
-			        
-				tmpr = sGetJSON(tmpr.nextLink);
-				console.log('tmprn, length='+tmpr.items.length);
-				console.log(tmpr);
-				items = items.concat(tmpr.items);
-				if(progressCb){ progressCb(items); }
-			}
-			return items;
-			
-		};
-
-	/**
-	 * 
-	 * @param success
-	 * @param error
-	 * @param progressCb
-	 * @param parametersToUse
-	 * @returns
-	 */
-	var getAllResultPages = function( success, error, progressCb, parametersToUse )
+	var allItemsPages = [];
+	this.getAllItemsPages = function()
 	{
-		
-		var getItems = function(url,params)
-		{
-		        log('calling getrequest to get tmpr...');
-			var tmpr = sGetJSON(url,params);
-			log(tmpr);
-			var items = tmpr.items;
-			console.log('tmpr1, length='+items.length);
-			if(progressCb){ progressCb(items); }
-			while(tmpr.nextPageToken)
-			{
-			        
-				tmpr = sGetJSON(tmpr.nextLink);
-				console.log('tmprn, length='+tmpr.items.length);
-				console.log(tmpr);
-				items = items.concat(tmpr.items);
-				if(progressCb){ progressCb(items); }
-			}
-			return items;
-			
-		};
-		
-		success(getItems('https://content.googleapis.com/drive/v2/files',parametersToUse));
+		return allItemsPages;
 	};
-	
-	var userShown = false;
-	
-	this.showChildrenFolders = function(el)
+	this.getAllItems()=function()
 	{
-		if(!userShown)
+		var allitems = [];
+		if(allItemsPages && allItemsPages.length && (allItemsPages.length>0))
 		{
-			try{
-				setTimeout(function(){
-			var dfsr = sGetRequest(driveFilesUrl+'/root',{"fields":"owners(displayName)"});
-			var dfsro = JSON.parse(dfsr);
-			userShown=true;
-			var dfsro_o=dfsro.owners[0].displayName;
-			jQuery('.logout .user').text(dfsro_o);
-			// .owners[0].displayName
-				},5000);
-			}catch(ex1x){}
-		}
-		
-		
-		var jqel = jQuery(el);
-		jqel.empty();
-		
-		var urlp = getUrlParams();
-		if( urlp && urlp.state ){urlp=JSON.parse(urlp.state);}
-		
-		// todo: remove this
-		if(! ( urlp && urlp.ids && urlp.ids.length && urlp.ids.length>0) ){urlp = {"ids":["root"]};}
-		// ,"0B-9SCj66PvWJWHFFVjFQbkExdFk"
-		// ?state={ids:["0B-9SCj66PvWJWHFFVjFQbkExdFk"]}
-		// http://www.file2url.com/drive-folder-search/?state={%22ids%22:[%220B-9SCj66PvWJWHFFVjFQbkExdFk%22]}
-		// http://www.file2url.com/drive-folder-search/?state=%7B%22ids%22:%5B%220B9ICicDg0C8nelFBVVI2dmtZZ3c%22%5D,%22action%22:%22open%22,%22userId%22:%22104178504608779515341%22%7D
-		
-		
-		if(! ( urlp && urlp.ids && urlp.ids.length && urlp.ids.length>0) )
-		{
-			//TODO: show error message.
-			alert('urlp='+urlp);
-			log(urlp);
-			return;
-		}
-		var folderids = urlp.ids;
-		var i = 0;
-		for(i = 0;i<folderids.length;i++)
-		{
-			var folderid = folderids[i];
-			jqel.append('<div class="getFolderName '
-			  +folderid
-			  +'" id="'
-			  +folderid
-			  +'" action="getFolderName">'
-			  +'<div class="folderTitle" type="folderTitle">Loading folder with id '
-			  +folderid+'...</div>'
-			  +'<div class="folderChildren" type="folderChildren">'
-			  +'</div>'
-			  +'</div>');
-		}
-	};	
-	
-	/**
-	  * thread logic to run - downloads and populates additional info / children as needed
-	 **/ 
-	var pthread = function()
-	{
-		var fge = jQuery("*[action='getFolderName']").first();
-		var done=false;
-		if(fge && fge.length && fge.length>0 )
-		{
-			fge.removeClass('getFolderName');
-			var id1 = fge[0].id;
-			
-			fge.addClass('folderItem');
-			var name1o = getFileItem(id1);
-			var fget = fge.find("*[type='folderTitle']");
-			var fgec = fge.find("*[type='folderChildren']");
-			if(!name1o.title){fget.text(JSON.stringify(name1o));}
-			else{fget.text(name1o.title);}
-			
-			fge.attr('action','getChildFolders');
-			done=true;
-		}
-		
-		
-		fge = jQuery("*[action='getChildFolders']").first();
-		
-		if((!done) && fge && fge.length && fge.length>0 )
-		{
-			fge.attr('action','gettingChildFolders');
-			var fgefc = fge.children().last();
-			var qobj = {"q":" '"+fge[0].id+"' in parents AND mimeType='application/vnd.google-apps.folder' "};
-			fgefc.text(JSON.stringify(qobj));
-			var resp = sGetJSON(driveFilesUrl,qobj);
-			var items = resp.items;
-			if(items && items.length && items.length>0)
+			for(var i = 0; i<allItemsPages.length;i++)
 			{
-				fgefc.text('');
-				for(var i = 0;i<items.length;i++)
+				if(allItemsPages[i].items)
 				{
-					var item = jQuery('<div/>');
-					item.attr('id',items[i].id);
-					var itemt = jQuery('<div/>');
-					itemt.addClass('folderTitle').attr('type','folderTitle');
-					itemt.text(items[i].title);
-					var itemc = jQuery('<div/>');
-					itemt.addClass('folderChildren').attr('type','folderChildren');					
-					item.append(itemt);
-					item.append(itemc);
-					/*
-					<div class="root folderItem" id="root" action=""><div class="folderTitle" type="folderTitle">My Drive</div><div class="folderChildren" type="folderChildren"><div id="0B9ICicDg0C8nbGNKb0toYlJ6ejQ" action="">testfolder2</div><div id="0B9ICicDg0C8nZUZic0h2Wi1iWGM" action="">testfolder1</div></div></div>
-					*/
-					item.attr('action','getChildFolders');
-					fgefc.append(item);
+					var currentItems = allItemsPages[i].items;
+					if(currentItems && currentItems.length && (currentItems.length>0))
+					{
+						
+						for(var j = 0; j<currentItems.length;j++)
+						{
+							var currentItem = currentItems[j];
+							allItems.push(currentItem);
+						}
+					}
 				}
-				
+				else
+				{
+					
+				}
 			}
-			//fgefc.text(JSON.stringify(resp));
-			fge.attr('action','listFiles');
-			done=true;
 		}
 		
+		return allitems;
 	};
 	
-	var threadInt = setInterval(pthread, 5000);
-	
+//	var ispageworking = false;
+	var getNextPage = function()
+	{
+		
+	};
+
 } // end of class
