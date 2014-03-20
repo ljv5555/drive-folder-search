@@ -206,9 +206,8 @@ function GoogleDriveClient(access_token) {
 		}
 	};
 
-	this.showChildrenFolders=function(elementid)
+	this.showChildrenFolders=function(lastcb)
 	{
-		var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
 		/*  '"+folderid+"' in parents AND */
 		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
