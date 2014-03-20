@@ -27,6 +27,21 @@ jQuery.noConflict();
 -->
 <script src="https://raw.github.com/ljv5555/drive-folder-search/master/js/listFiles2.js"></script>
 <!-- script src="js/driveFolderSearch.js"></script -->
+<script>
+    
+window['googleDriveClient']=null;
+
+var googleDriveClient = null;
+var driveClientInit = function()
+{
+  jQuery('.listFoldersResult').slideDown();
+  googleDriveClient = new GoogleDriveClient();
+  googleDriveClient.setToken(gapi.auth.getToken().access_token);
+  jQuery('.listFoldersResult').slideUp();
+};
+
+    
+</script>
 </head>
 <body>
 <div class="forkme">
