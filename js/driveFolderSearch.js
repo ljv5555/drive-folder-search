@@ -1,3 +1,4 @@
+/*
 
 window['googleDriveClient']=null;
 
@@ -10,3 +11,7 @@ var driveClientInit = function()
   jQuery('.listFoldersResult').slideUp();
 };
 
+*/
+// var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
+		
+		
