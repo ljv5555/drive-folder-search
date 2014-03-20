@@ -58,7 +58,7 @@
         	  window['googleDriveClient'].setToken(gapi.auth.getToken().access_token);
         	  jQuery('.listFoldersResult').slideUp();
         	  setTimeout(function(){
-        		  window['googleDriveClient'].showChildrenFolders(jQuery('.r')[0]);
+        		  window['googleDriveClient'].showChildrenFolders(function(d){jQuery('.r').html(JSON.stringify(d));});
         	  },1000);
         	  
           },1000);
