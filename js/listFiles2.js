@@ -193,21 +193,26 @@ function GoogleDriveClient(access_token) {
 	};
 	
 //	var ispageworking = false;
-	var getNextPage = function(r)
+	var getNextPage = function(r,lastcb)
 	{
 		allItemsPages.push(r);
 		if(r.nextLink)
 		{
-			getJSON(r.nextLink,function(r2){getNextPage(r2);});
+			getJSON(r.nextLink,function(r2){getNextPage(r2,lastcb);});
+		}
+		else
+		{
+			lastcb(allItemsPages);
 		}
 	};
 
-	this.getAllItemsPagesForFolders=function(folderid)
+	this.showChildrenFolders=function(elementid)
 	{
+		var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
 		/*  '"+folderid+"' in parents AND */
 		if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
-		getJSON(driveFilesUrl,function(r){getNextPage(r);},false,q);		
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb);},false,q);		
 	};
 		// if(allItemsPages && allItemsPages.length && allItemsPages.length>0)
 		// {
