@@ -40,10 +40,13 @@ var driveClientInit = function()
   
   //jQuery('.listFoldersResult').slideUp();
 };
-var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
-setTimeout(function(){var rr = jQuery('.listFoldersResult');
-lastcb(rr[0]);
-},5000);
+var lastcb = function()
+{
+	jQuery('.r').html(
+		'<pre>'+JSON.stringify(window.googleDriveClient.getAllItemsPages())+'</pre>'
+		);
+};
+setTimeout(function(){lastcb();},5000);
 
 /*
 
