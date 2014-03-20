@@ -127,7 +127,7 @@ function GoogleDriveClient(access_token) {
 	 */
 	var getJSON = function(url, callback, errorCallback, requestParameters, doNotSend) 
 	{
-		return getRequest(url, function(e){callback(e)}, errorCallback, requestParameters, doNotSend);
+		return getRequest(url, function(e){callback(JSON.parse(e))}, errorCallback, requestParameters, doNotSend);
 	};
 
 	/**
