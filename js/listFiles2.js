@@ -181,32 +181,15 @@ function GoogleDriveClient(access_token) {
 	};
 	this.getAllItems = function()
 	{
-		var allitems = [];
-		if(allItemsPages && allItemsPages.length && (allItemsPages.length>0))
-		{
-			for(var i = 0; i<allItemsPages.length;i++)
-			{
-				if(allItemsPages[i].items)
-				{
-					var currentItems = allItemsPages[i].items;
-					if(currentItems && currentItems.length && (currentItems.length>0))
-					{
-						
-						for(var j = 0; j<currentItems.length;j++)
-						{
-							var currentItem = currentItems[j];
-							allItems.push(currentItem);
-						}
-					}
-				}
-				else
-				{
-					
-				}
-			}
-		}
-		
-		return allitems;
+		var ai = [];
+		jQuery(gdc.getAllItemsPages()).each(
+			function(i,e){
+				jQuery(e.items).each(
+					function(i2,e2){
+						ai.push(e2);
+					});
+			});
+		return ai;
 	};
 	
 //	var ispageworking = false;
