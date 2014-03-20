@@ -210,7 +210,7 @@ function GoogleDriveClient(access_token) {
 	{
 		var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
 		/*  '"+folderid+"' in parents AND */
-		if(!folderid){folderid='root';}
+		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
 		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb);},false,q);		
 	};
