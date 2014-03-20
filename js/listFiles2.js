@@ -221,8 +221,9 @@ function GoogleDriveClient(access_token) {
 
 	this.getAllItemsPagesForFolders=function(folderid)
 	{
+		/*  '"+folderid+"' in parents AND */
 		if(!folderid){folderid='root';}
-		var q = {"q":" '"+folderid+"' in parents AND mimeType='application/vnd.google-apps.folder' "};
+		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
 		getJSON(driveFilesUrl,function(r){getNextPage(r);},false,q);		
 	};
 		// if(allItemsPages && allItemsPages.length && allItemsPages.length>0)
