@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Mar 8, 2014 8:13:40 PM                                                        
+
+     driveFolderSearch    
+     search google drive by folder and subfolder
+                   
+     joe                                                                
+     ====================================================================== -->
+<project name="driveFolderSearch" default="default">
+    <description>
+            search google drive by folder and subfolder
+    </description>
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default">
+            <echo>build.xml: target: default</echo>
+    </target>
+
+    <!-- ================================= 
+          target: copyToServer              
+         ================================= -->
+    <target name="copyToServer">
+            <echo>build.xml: target: copyToServer</echo>
+    </target>
+
+    <target name="test">
+            <echo>build.xml: target: test</echo>
+    </target>
+
+</project>
