@@ -182,7 +182,7 @@ function GoogleDriveClient(access_token) {
 	var getAllItems = function()
 	{
 		var apa = [];
-		jQuery(ap).each(function(i,e){
+		jQuery(allItemsPages).each(function(i,e){
 		if(e.items){apa=apa.concat(e.items);}
 		});
 		return apa;
