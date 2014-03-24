@@ -198,7 +198,7 @@ function GoogleDriveClient(access_token) {
 		
 		var rtn = [];
 		jQuery(titles).each(function(i,e){
-			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id")});
+			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id"),"parentIsRoot":_.pluck(parentObjects[i],"isRoot")});
 		});
 		return rtn;
 	};
