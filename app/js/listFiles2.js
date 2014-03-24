@@ -195,13 +195,10 @@ function GoogleDriveClient(access_token) {
 		var parentObjects = _.pluck(apa,"parents");
 		console.log("ParentObjects: ");
 		console.log(parentObjects);
-		var parentIds = [];
-		jQuery(parentObjects).each(function(i,e){
-			parentIds.push( _.pluck(e.parents,"id") );
-		});
+		
 		var rtn = [];
 		jQuery(titles).each(function(i,e){
-			rtn.push({"id":ids[i],"title":titles[i],"parentIds":parentIds[i]});
+			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id")});
 		});
 		return rtn;
 	};
