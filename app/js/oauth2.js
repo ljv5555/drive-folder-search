@@ -26,7 +26,7 @@
        * Called when the client library is loaded to start the auth flow.
        */
       function handleClientLoad() {
-      	gapi.client.setApiKey('q4ZooyaoU7kDSs4KMv0Ipx9g');
+      	gapi.client.setApiKey(apiKey);
         window.setTimeout(checkAuth, 1);
       }
 
