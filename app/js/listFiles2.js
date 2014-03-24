@@ -179,18 +179,30 @@ function GoogleDriveClient(access_token) {
 	{
 		return allItemsPages;
 	};
-	this.getAllItems = function()
+	var getAllItems = function()
 	{
-		var ai = [];
-		jQuery(gdc.getAllItemsPages()).each(
-			function(i,e){
-				jQuery(e.items).each(
-					function(i2,e2){
-						ai.push(e2);
-					});
-			});
-		return ai;
+		var apa = [];
+		jQuery(ap).each(function(i,e){
+		if(e.items){apa=apa.concat(e.items);}
+		});
+		return apa;
 	};
+	this.getFolderElementsSorted=function()
+	{
+		var titles = _.pluck(apa,"title");
+		var ids = _.pluck(apa,"id");
+		var parentObjects = _.pluck(apa,"parents");
+		var parentIds = [];
+		jQuery(function(i,e){
+			parantIds.push( _.pluck(e.parents,"id") );
+		});
+		var rtn = [];
+		jQuery(titles).each(function(i,e){
+			rtn.push({"id":ids[i],"title":titles[i],"parentIds":parentIds[i]);
+		});
+		return rtn;
+	}
+	
 	
 //	var ispageworking = false;
 	var getNextPage = function(r,lastcb)
