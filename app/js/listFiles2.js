@@ -189,6 +189,7 @@ function GoogleDriveClient(access_token) {
 	};
 	this.getFolderElementsSorted=function()
 	{
+		var apa = getAllItems();
 		var titles = _.pluck(apa,"title");
 		var ids = _.pluck(apa,"id");
 		var parentObjects = _.pluck(apa,"parents");
