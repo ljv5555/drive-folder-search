@@ -198,10 +198,10 @@ function GoogleDriveClient(access_token) {
 		});
 		var rtn = [];
 		jQuery(titles).each(function(i,e){
-			rtn.push({"id":ids[i],"title":titles[i],"parentIds":parentIds[i]);
+			rtn.push({"id":ids[i],"title":titles[i],"parentIds":parentIds[i]});
 		});
 		return rtn;
-	}
+	};
 	
 	
 //	var ispageworking = false;
