@@ -194,8 +194,8 @@ function GoogleDriveClient(access_token) {
 		var titles = _.pluck(apa,"title");
 		var ids = _.pluck(apa,"id");
 		var parentObjects = _.pluck(apa,"parents");
-		console.log("ParentObjects: ");
-		console.log(parentObjects);
+		//console.log("ParentObjects: ");
+		//console.log(parentObjects);
 		
 		var rtn = [];
 		jQuery(titles).each(function(i,e){
