@@ -210,7 +210,7 @@ function GoogleDriveClient(access_token) {
 		});});
 		// get children of root
 		_.each(rtn,function(e){jQuery(e.parentIds).each(function(i2,e2){
-			if(e2==rootId){
+			if(e2==rootid){
 				all.push([rootid,e2.id]);
 			}
 		});});
