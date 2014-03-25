@@ -29,7 +29,9 @@ function GoogleDriveClient(access_token) {
        
         _.each(o,function(oe){
             rtn+='<tr>'; 
-            _.each(headers,function(o2){rtn+='<td>'+_.escape(oe[o2])+'</td>';});
+            _.each(headers,function(o2){rtn+='<td>'+_.escape(
+                _.isObject(oe[o2])?JSON.stringify(oe[o2]):oe[o2]
+                                                            )+'</td>';});
             rtn+='</tr>';
         });
         rtn+='</table>';
