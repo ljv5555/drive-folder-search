@@ -189,6 +189,7 @@ function GoogleDriveClient(access_token) {
 	};
 	this.getFolderElementsSorted=function()
 	{
+		var ii = 0;
 		var all = [];
 		var apa = getAllItems();
 		var titles = _.pluck(apa,"title");
@@ -197,6 +198,13 @@ function GoogleDriveClient(access_token) {
 		var parents = _.map(parentObjects,function(parentObjectArray){
 			return _.map(parentObjectArray,function(po){ return po.id; });
 		});
+		var idOfRoot = '';
+		for(ii=0;(ii<parentObjects.length) && (idOfRoot=='');ii++)
+		{
+			if(parentObjects[ii].isRoot){idOfRoot=parentObjects[ii].id;}
+		}
+		
+		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
 		// for each entry, duplicate for each parent > 1 and unshift each parent id
 		// until first entry of each is the root folder
