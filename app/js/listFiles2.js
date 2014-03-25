@@ -187,6 +187,14 @@ function GoogleDriveClient(access_token) {
 		});
 		return apa;
 	};
+	this.pGetAllItems = function(){
+		return 
+			_.flatten(
+				_.map(allItemsPages,
+						function(e){if(e.items){return e.items;}else{return [];}}
+				),
+				true);
+	};
 	this.getFolderElementsSorted=function()
 	{
 		var all = [];
