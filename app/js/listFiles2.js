@@ -181,14 +181,11 @@ function GoogleDriveClient(access_token) {
 	};
 	var getAllItems = function()
 	{
-		var apa = [];
-		jQuery(allItemsPages).each(function(i,e){
-		if(e.items){apa=apa.concat(e.items);}
-		});
-		return apa;
-	};
-	this.pGetAllItems = function(){
 		return _.flatten( _.map( allItemsPages , function(e){if(e.items){return e.items;}else{return [];}} ) , true);
+	};
+	this.p_getAllItems = function()
+	{
+		return getAllItems();
 	};
 	this.getFolderElementsSorted=function()
 	{
@@ -197,6 +194,17 @@ function GoogleDriveClient(access_token) {
 		var titles = _.pluck(apa,"title");
 		var ids = _.pluck(apa,"id");
 		var parentObjects = _.pluck(apa,"parents");
+		var parents = _.map(parentObjects,function(parentObjectArray){
+			return _.map(parentObjectArray,function(po){ return po.id; });
+		});
+		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
+		// for each entry, duplicate for each parent > 1 and unshift each parent id
+		// until first entry of each is the root folder
+		
+		// when filling entries, folders with multiple parents will show more than once but will all fill at the same time
+		
+		
+		
 		//console.log("ParentObjects: ");
 		//console.log(parentObjects);
 		
