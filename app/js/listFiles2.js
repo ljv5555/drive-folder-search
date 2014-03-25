@@ -201,11 +201,20 @@ function GoogleDriveClient(access_token) {
 		jQuery(titles).each(function(i,e){
 			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id"),"parentIsRoot":_.pluck(parentObjects[i],"isRoot")});
 		});
-		// get root
+		// get root and children of root
+		var rootid = '';
 		_.each(rtn,function(e){jQuery(e.parentIsRoot).each(function(i2,e2){
-			if(e2){if(all.length==0){all.push([e.parentIds[i2]]);}}
+			if(e2){
+				if(all.length==0){all.push([e.parentIds[i2]]);rootid = all[0][0];}
+			}
 		});});
-		// get parents of root
+		// get children of root
+		_.each(rtn,function(e){jQuery(e.parentIds).each(function(i2,e2){
+			if(e2==rootId){
+				all.push([rootid,e2.id]);
+			}
+		});});
+		
 		return all;
 	};
 	
