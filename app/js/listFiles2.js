@@ -4,14 +4,39 @@
  * @returns
  */
 function GoogleDriveClient(access_token) {
+	
+	
+	
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
 	
 	
-	if (!jQuery) {
-		var error = 'Error: You must include jQuery to use this script.';
+	if ((!jQuery) || (!_)) {
+		var error = 'Error: You must include jQuery and underscore to use this script.';
 		alert(error);
 		return error;
 	}
+	
+	
+    /**
+     * array of objects to html table
+     **/
+    var objectArrayToTable = function(o)
+    {
+        var rtn = '<table><tr>';
+        var headers = _.unique(_.flatten(_.map(o,function(e){return _.keys(e);}),true)).sort();
+        _.each(headers,function(o){rtn+='<th>'+_.escape(o)+'</th>';});
+        rtn+='</tr>';
+       
+        _.each(o,function(oe){
+            rtn+='<tr>'; 
+            _.each(headers,function(o2){rtn+='<td>'+_.escape(oe[o2])+'</td>';});
+            rtn+='</tr>';
+        });
+        rtn+='</table>';
+        return rtn;
+    };
+	
+	
 	
 	/**
 	 * 
