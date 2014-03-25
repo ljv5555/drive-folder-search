@@ -244,6 +244,15 @@ function GoogleDriveClient(access_token) {
 		
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
+		for(ii=0;ii<parentIdsAndIdsArrays.length;ii++)
+		{
+			if(parentIdsAndIdsArrays[ii]!=idOfRoot)
+			{
+				var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
+				parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
+			}
+		}
+		return parentIdsAndIdsArrays;
 		// for each entry, duplicate for each parent > 1 and unshift each parent id
 		// until first entry of each is the root folder
 		
@@ -254,6 +263,7 @@ function GoogleDriveClient(access_token) {
 		//console.log("ParentObjects: ");
 		//console.log(parentObjects);
 		
+		/*
 		var rtn = [];
 		jQuery(titles).each(function(i,e){
 			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id"),"parentIsRoot":_.pluck(parentObjects[i],"isRoot")});
@@ -273,6 +283,7 @@ function GoogleDriveClient(access_token) {
 		});});
 		
 		return all;
+		*/
 	};
 	
 	
