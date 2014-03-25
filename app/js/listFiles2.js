@@ -16,6 +16,17 @@ function GoogleDriveClient(access_token) {
 		return error;
 	}
 	
+    var prependToEach=function(valuesToPrepend, originalArray)
+    {
+        var rtn = [];
+        _.each(valuesToPrepend,function(e){
+            var a1 = [];
+             a1.push(_.clone(e));
+            var a2 = a1.concat(_.clone(originalArray));
+            rtn.push(a2);
+        });
+        return rtn;
+    };
 	
     /**
      * array of objects to html table
