@@ -248,8 +248,8 @@ function GoogleDriveClient(access_token) {
 		{
 			if(parentIdsAndIdsArrays[ii]!=idOfRoot)
 			{
-				var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
-				parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
+				//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
+				//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
 			}
 		}
 		return parentIdsAndIdsArrays;
