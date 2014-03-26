@@ -254,27 +254,35 @@ function GoogleDriveClient(access_token) {
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
 		var idKeyParentIdsArrayMap={}; _.each(parentIdMap,function(d){idKeyParentIdsArrayMap[d.id]=d.parentIds;});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
-		for(ii=0;ii<parentIdsAndIdsArrays.length;ii++)
+		// while not everey array in parentIdsAndIdsArrays has first element of idOfRoot
+		while(true)
 		{
-			if(parentIdsAndIdsArrays[ii][0]!=idOfRoot)
+			var arrayBefore = JSON.stringify(parentIdsAndIdsArrays);
+			for(ii=0;ii<parentIdsAndIdsArrays.length;ii++)
 			{
-				var iii = 0;
-				var pida = idKeyParentIdsArrayMap[parentIdsAndIdsArrays[ii][0]];
-				var resa = _.clone(parentIdsAndIdsArrays[ii]);
-				for(iii=0;iii<1 && iii<pida.length;iii++)
+				if(parentIdsAndIdsArrays[ii][0]!=idOfRoot)
 				{
-					parentIdsAndIdsArrays[ii].unshift(_.clone(pida[iii]));
+					var iii = 0;
+					var pida = idKeyParentIdsArrayMap[parentIdsAndIdsArrays[ii][0]];
+					var resa = _.clone(parentIdsAndIdsArrays[ii]);
+					for(iii=0;iii<1 && iii<pida.length;iii++)
+					{
+						parentIdsAndIdsArrays[ii].unshift(_.clone(pida[iii]));
+					}
+					for(iii=1;iii<pida.length;iii++)
+					{
+						var resa2 = _.clone(resa);
+						resa2.unshift(_.clone(pida[iii]));
+						parentIdsAndIdsArrays.push(resa2);
+					}
+					//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
+					//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
 				}
-				for(iii=1;iii<pida.length;iii++)
-				{
-					var resa2 = _.clone(resa);
-					resa2.unshift(_.clone(pida[iii]));
-					parentIdsAndIdsArrays.push(resa2);
-				}
-				//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
-				//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
 			}
+			var arrayAfter = JSON.stringify(parentIdsAndIdsArrays);
+			if(arrayBefore==arrayAfter){break;}
 		}
+		// end while
 		setrv('parentIdMap',parentIdMap);
 		setrv('parentIdsAndIdsArrays',parentIdsAndIdsArrays);
 		return parentIdsAndIdsArrays;
