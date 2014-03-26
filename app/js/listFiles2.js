@@ -303,10 +303,11 @@ function GoogleDriveClient(access_token) {
 
 	this.showChildrenFolders=function(lastcb)
 	{
+		var lastcb2 = function(d){jQuery('.r').html(objectArrayToTable(d));};
 		/*  '"+folderid+"' in parents AND */
 		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
-		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb);},false,q);		
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);		
 	};
 		// if(allItemsPages && allItemsPages.length && allItemsPages.length>0)
 		// {
