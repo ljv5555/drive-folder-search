@@ -244,7 +244,11 @@ function GoogleDriveClient(access_token) {
 		var idOfRoot = '';
 		for(ii=0;(ii<parentObjects.length) && (idOfRoot=='');ii++)
 		{
-			if(parentObjects[ii].isRoot){idOfRoot=parentObjects[ii].id;}
+			var ij=0;
+			for(ij=0;ij<parentObjects[ii].length;ij++)
+			{
+				if(parentObjects[ii][ij].isRoot){idOfRoot=parentObjects[ii][ij].id;}				
+			}
 		}
 		setrv('idOfRoot',idOfRoot);
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
