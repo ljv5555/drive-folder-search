@@ -5,7 +5,7 @@
  */
 function GoogleDriveClient(access_token) {
 	
-	window.rv=[];
+	window.rv={"_desc":"this is rv"};
 	var setrv=function(n,v){window.rv[n]=v;};
 	
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
