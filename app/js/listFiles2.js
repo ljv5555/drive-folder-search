@@ -232,17 +232,21 @@ function GoogleDriveClient(access_token) {
 		var all = [];
 		var apa = getAllItems();
 		var titles = _.pluck(apa,"title");
+		setrv('titles',titles);
 		var ids = _.pluck(apa,"id");
+		setrv('ids',ids);
 		var parentObjects = _.pluck(apa,"parents");
+		setrv('parentObjects',parentObjects);
 		var parents = _.map(parentObjects,function(parentObjectArray){
 			return _.map(parentObjectArray,function(po){ return po.id; });
 		});
+		setrv('parents',parents);
 		var idOfRoot = '';
 		for(ii=0;(ii<parentObjects.length) && (idOfRoot=='');ii++)
 		{
 			if(parentObjects[ii].isRoot){idOfRoot=parentObjects[ii].id;}
 		}
-		
+		setrv('idOfRoot',idOfRoot);
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
 		for(ii=0;ii<parentIdsAndIdsArrays.length;ii++)
@@ -253,6 +257,8 @@ function GoogleDriveClient(access_token) {
 				//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
 			}
 		}
+		setrv('parentIdMap',parentIdMap);
+		setrv('parentIdsAndIdsArrays',parentIdsAndIdsArrays);
 		return parentIdsAndIdsArrays;
 		// for each entry, duplicate for each parent > 1 and unshift each parent id
 		// until first entry of each is the root folder
