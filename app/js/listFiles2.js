@@ -5,7 +5,8 @@
  */
 function GoogleDriveClient(access_token) {
 	
-	
+	this.rv={};
+	var setrv=function(n,v){rv[n]=v;};
 	
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
 	
@@ -301,9 +302,10 @@ function GoogleDriveClient(access_token) {
 		}
 	};
 
+	
 	this.showChildrenFolders=function(lastcb)
 	{
-		var lastcb2 = function(d){jQuery('.r').html(objectArrayToTable(d.items));};
+		var lastcb2 = function(d){setrv('d',d); jQuery('.r').html(objectArrayToTable(d.items));};
 		/*  '"+folderid+"' in parents AND */
 		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
