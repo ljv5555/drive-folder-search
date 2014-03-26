@@ -305,7 +305,7 @@ function GoogleDriveClient(access_token) {
 	
 	this.showChildrenFolders=function(lastcb)
 	{
-		var lastcb2 = function(d){setrv('d',d); jQuery('.r').html(objectArrayToTable(d.items));};
+		var lastcb2 = function(d){setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true);));};
 		/*  '"+folderid+"' in parents AND */
 		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
