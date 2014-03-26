@@ -248,11 +248,25 @@ function GoogleDriveClient(access_token) {
 		}
 		setrv('idOfRoot',idOfRoot);
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
+		var idKeyParentIdsArrayMap={}; _.each(parentIdMap,function(d){idKeyParentIdsArrayMap[d.id]=d.parentIds;});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
 		for(ii=0;ii<parentIdsAndIdsArrays.length;ii++)
 		{
-			if(parentIdsAndIdsArrays[ii]!=idOfRoot)
+			if(parentIdsAndIdsArrays[ii][0]!=idOfRoot)
 			{
+				var iii = 0;
+				var pida = idKeyParentIdsArrayMap[parentIdsAndIdsArrays[ii][0]];
+				var resa = _.clone(parentIdsAndIdsArrays[ii]);
+				for(iii=0;iii<1 && iii<pida.length;iii++)
+				{
+					parentIdsAndIdsArrays[ii].unshift(_.clone(pida[iii]));
+				}
+				for(iii=1;iii<pida.length;iii++)
+				{
+					var resa2 = _.clone(resa);
+					resa2.unshift(_.clone(pida[iii]));
+					parentIdsAndIdsArrays.push(resa2);
+				}
 				//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
 				//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
 			}
