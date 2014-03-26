@@ -303,7 +303,7 @@ function GoogleDriveClient(access_token) {
 
 	this.showChildrenFolders=function(lastcb)
 	{
-		var lastcb2 = function(d){jQuery('.r').html(objectArrayToTable(d));};
+		var lastcb2 = function(d){jQuery('.r').html(objectArrayToTable(d.items));};
 		/*  '"+folderid+"' in parents AND */
 		//if(!folderid){folderid='root';}
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
