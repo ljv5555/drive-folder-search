@@ -331,4 +331,33 @@ function GoogleDriveClient(access_token) {
 		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);		
 	};
 	
+	
+
+	var allSearchResultsPages = [];
+	
+	var getNextSearchResultsPage = function(r,lastcb)
+	{
+		allSearchResultsPages.push(r);
+		if(r.nextLink)
+		{
+			getJSON(r.nextLink,function(r2){getNextSearchResultsPage(r2,lastcb);});
+		}
+		else
+		{
+			lastcb(allSearchResultsPages);
+		}
+	};
+
+	
+	this.getAllSearchResults=function(String query)
+	{
+		var lastcb2 = function(d)
+		{
+			jQuery('.r').html(objectArrayToTable(_.flatten(allSearchResultsPages,true)));
+			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
+		};
+		var q = {"q":""+query};
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);	
+	};
+	
 } // end of class
