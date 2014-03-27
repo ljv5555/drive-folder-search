@@ -281,7 +281,6 @@ function GoogleDriveClient(access_token) {
 			return _.map(a,function(i){return titles[ids.indexOf(i)];});
 		});
 		var allFolderElements = [];
-		allFolderElementsWrapper.className='allFolderElements';
 		_.each(allFolderIds,function(e,i){
 			var fida = e;
 			var fta = allFolderTitles[i];
@@ -294,6 +293,7 @@ function GoogleDriveClient(access_token) {
 		});
 		_(allFolderElements).sortBy(function(e){return _.unescape(e.innerHTML);});
 		var allFolderElementsWrapper = document.createElement('div');
+		allFolderElementsWrapper.className='allFolderElements';
 		_.each(allFolderElements,function(e){allFolderElementsWrapper.appendChild(e);});
 		return allFolderElementsWrapper;
 	};
