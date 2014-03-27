@@ -283,8 +283,8 @@ function GoogleDriveClient(access_token) {
 		var allFolderElements = [];
 		var allFolderElementsSortBy = [];
 		_.each(allFolderIds,function(e,i){
-			var fida = e;
-			var fta = allFolderTitles[i];
+			var fida = _.clone(e);
+			var fta = _.clone(allFolderTitles[i]);
 			var folderElement = document.createElement('div');
 			folderElement.setAttribute('data-folder-id',_.last(fida));
 			folderElement.setAttribute('data-folder-ids',fida.join(' '));
