@@ -293,7 +293,7 @@ function GoogleDriveClient(access_token) {
 			folderElement.innerHTML=_.escape(fta.join(' / '));
 			allFolderElements.push(folderElement);
 		});
-		var allFolderElementsAreSorted = _.sortBy(allFolderElementsfunction(e,i){return e.getAttribute('data-folder-sortby');});
+		var allFolderElementsAreSorted = _.sortBy(allFolderElements,function(e,i){return e.getAttribute('data-folder-sortby');});
 		var allFolderElementsWrapper = document.createElement('div');
 		allFolderElementsWrapper.className='allFolderElements';
 		for(i=0;i<allFolderElementsAreSorted.length;i++){allFolderElementsWrapper.appendChild(allFolderElementsAreSorted[i]);}
