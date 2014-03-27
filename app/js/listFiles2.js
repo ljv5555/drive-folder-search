@@ -277,7 +277,7 @@ function GoogleDriveClient(access_token) {
 					}
 					//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
 					//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
-					break;
+					//break;
 				}
 			}
 			var arrayAfter = JSON.stringify(parentIdsAndIdsArrays);
