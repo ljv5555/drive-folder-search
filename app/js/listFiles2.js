@@ -281,7 +281,6 @@ function GoogleDriveClient(access_token) {
 			return _.map(a,function(i){return titles[ids.indexOf(i)];});
 		});
 		var allFolderElements = [];
-		var allFolderElementsSortBy = [];
 		_.each(allFolderIds,function(e,i){
 			var fida = _.clone(e);
 			var fta = _.clone(allFolderTitles[i]);
@@ -289,15 +288,15 @@ function GoogleDriveClient(access_token) {
 			folderElement.setAttribute('data-folder-id',_.last(fida));
 			folderElement.setAttribute('data-folder-ids',fida.join(' '));
 			// TODO: - use template to make a link for each folder title 
-			allFolderElementsSortBy.push(fta.join('').toUpperCase());
-			folderElement.setAttribute('data-folder-sortby',_.last(allFolderElementsSortBy));
+			var afesb = (fta.join('').toUpperCase());
+			folderElement.setAttribute('data-folder-sortby',afesb);
 			folderElement.innerHTML=_.escape(fta.join(' / '));
 			allFolderElements.push(folderElement);
 		});
-		_(allFolderElements).sortBy(function(e,i){return allFolderElementsSortBy[i];});
+		var allFolderElementsAreSorted = _.sortBy(allFolderElementsfunction(e,i){return e.getAttribute('data-folder-sortby');});
 		var allFolderElementsWrapper = document.createElement('div');
 		allFolderElementsWrapper.className='allFolderElements';
-		_.each(allFolderElements,function(e){allFolderElementsWrapper.appendChild(e);});
+		for(i=0;i<allFolderElementsAreSorted.length;i++){allFolderElementsWrapper.appendChild(allFolderElementsAreSorted[i]);}
 		return allFolderElementsWrapper;
 	};
 	this.g_getFolderElementsSorted=function()
