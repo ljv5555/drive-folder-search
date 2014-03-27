@@ -290,6 +290,7 @@ function GoogleDriveClient(access_token) {
 			folderElement.setAttribute('data-folder-ids',fida.join(' '));
 			// TODO: - use template to make a link for each folder title 
 			allFolderElementsSortBy.push(fta.join('').toUpperCase());
+			folderElement.setAttribute('data-folder-sortby',_.last(allFolderElementsSortBy));
 			folderElement.innerHTML=_.escape(fta.join(' / '));
 			allFolderElements.push(folderElement);
 		});
