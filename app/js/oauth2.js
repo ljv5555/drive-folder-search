@@ -47,8 +47,8 @@
       function handleAuthResult(authResult) {
         var authButton = document.getElementById('authorizeButton');
         var logoutButton = document.getElementById('logoutButton');
-        jQuery(logoutButton).slideUp(10);
-        jQuery(authButton).slideDown(10);
+        jQuery(logoutButton).slideDown();
+        jQuery(authButton).slideUp();
         if(authResult && !authResult.error) 
         {
           // Access token has been successfully retrieved, requests can be sent to the API.
