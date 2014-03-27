@@ -47,11 +47,11 @@
       function handleAuthResult(authResult) {
         var authButton = document.getElementById('authorizeButton');
         var logoutButton = document.getElementById('logoutButton');
-        jQuery(logoutButton).slideDown();
-        jQuery(authButton).slideUp();
         if(authResult && !authResult.error) 
         {
-          // Access token has been successfully retrieved, requests can be sent to the API.
+        	jQuery(logoutButton).slideDown();
+            jQuery(authButton).slideUp();
+              // Access token has been successfully retrieved, requests can be sent to the API.
           setTimeout(
         		  function()
           {
@@ -69,9 +69,11 @@
         } 
         else 
         {
+        	jQuery(logoutButton).slideUp();
+            jQuery(authButton).slideDown();
+            
           // No access token could be retrieved, show the button to start the authorization flow.
           //authButton.style.display = 'block';
-          jQuery(authButton).slideDown();
           authButton.onclick = function() {
               gapi.auth.authorize(
                   {'client_id': CLIENT_ID, 'scope': SCOPES, 'immediate': false},
