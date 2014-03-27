@@ -226,21 +226,17 @@ function GoogleDriveClient(access_token) {
 	{
 		return getAllItems();
 	};
-	this.getFolderElementsSorted=function()
+	var getFolderElementsSorted=function()
 	{
 		var ii = 0;
 		var all = [];
 		var apa = getAllItems();
 		var titles = _.pluck(apa,"title");
-		setrv('titles',titles);
 		var ids = _.pluck(apa,"id");
-		setrv('ids',ids);
 		var parentObjects = _.pluck(apa,"parents");
-		setrv('parentObjects',parentObjects);
 		var parents = _.map(parentObjects,function(parentObjectArray){
 			return _.map(parentObjectArray,function(po){ return po.id; });
 		});
-		setrv('parents',parents);
 		var idOfRoot = '';
 		for(ii=0;(ii<parentObjects.length) && (idOfRoot=='');ii++)
 		{
@@ -250,7 +246,6 @@ function GoogleDriveClient(access_token) {
 				if(parentObjects[ii][ij].isRoot){idOfRoot=parentObjects[ii][ij].id;}				
 			}
 		}
-		setrv('idOfRoot',idOfRoot);
 		var parentIdMap = _.map(ids,function(e,i){return {"id":e,"parentIds":parents[i]};});
 		var idKeyParentIdsArrayMap={}; _.each(parentIdMap,function(d){idKeyParentIdsArrayMap[d.id]=d.parentIds;});
 		var parentIdsAndIdsArrays = _.map(ids,function(e){return [e];});
@@ -275,51 +270,35 @@ function GoogleDriveClient(access_token) {
 						resa2.unshift(_.clone(pida[iii]));
 						parentIdsAndIdsArrays.push(resa2);
 					}
-					//var cparents = parents[ids.indexOf(parentIdsAndIdsArrays[ii])];
-					//parentIdsAndIdsArrays[ii] = prependToEach(cparents,parentIdsAndIdsArrays[ii]);
-					//break;
 				}
 			}
 			var arrayAfter = JSON.stringify(parentIdsAndIdsArrays);
 			if(arrayBefore==arrayAfter){break;}
 		}
 		// end while
-		setrv('parentIdMap',parentIdMap);
-		setrv('parentIdsAndIdsArrays',parentIdsAndIdsArrays);
-		return parentIdsAndIdsArrays;
-		// for each entry, duplicate for each parent > 1 and unshift each parent id
-		// until first entry of each is the root folder
-		
-		// when filling entries, folders with multiple parents will show more than once but will all fill at the same time
-		
-		
-		
-		//console.log("ParentObjects: ");
-		//console.log(parentObjects);
-		
-		/*
-		var rtn = [];
-		jQuery(titles).each(function(i,e){
-			rtn.push({"id":ids[i],"title":titles[i],"parentIds":_.pluck(parentObjects[i],"id"),"parentIsRoot":_.pluck(parentObjects[i],"isRoot")});
+		var allFolderIds = parentIdsAndIdsArrays;
+		var allFolderTitles = _.map(parentIdsAndIdsArrays,function(a){
+			return _.map(a,function(i){return titles[ids.indexOf(i)];});
 		});
-		// get root and children of root
-		var rootid = '';
-		_.each(rtn,function(e){jQuery(e.parentIsRoot).each(function(i2,e2){
-			if(e2){
-				if(all.length==0){all.push([e.parentIds[i2]]);rootid = all[0][0];}
-			}
-		});});
-		// get children of root
-		_.each(rtn,function(e){jQuery(e.parentIds).each(function(i2,e2){
-			if(e2==rootid){
-				all.push([rootid,e.id]);
-			}
-		});});
-		
-		return all;
-		*/
+		var allFolderElements = document.createElement('div');
+		allFolderElements.className='allFolderElements';
+		_.each(allFolderIds,function(e,i){
+			var fida = e;
+			var fta = allFolderTitles[i];
+			var folderElement = document.createElement('div');
+			folderElement.setAttribute('data-folder-id',_.last(fida));
+			folderElement.setAttribute('data-folder-ids',fida.join(' '));
+			// TODO: - use template to make a link for each folder title 
+			folderElement.innerHTML=_.escape(fta.join(' / '));
+			allFolderElements.appendChild(folderElement);
+		});
+		return allFolderElements;
 	};
-	
+	this.g_getFolderElementsSorted=function()
+	{
+		return getFolderElementsSorted();
+	};
+
 	
 //	var ispageworking = false;
 	var getNextPage = function(r,lastcb)
@@ -338,21 +317,13 @@ function GoogleDriveClient(access_token) {
 	
 	this.showChildrenFolders=function(lastcb)
 	{
-		var lastcb2 = function(d){setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));};
-		/*  '"+folderid+"' in parents AND */
-		//if(!folderid){folderid='root';}
+		var lastcb2 = function(d)
+		{
+			jQuery('.r').append(getFolderElementsSorted());
+			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
+		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
 		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);		
 	};
-		// if(allItemsPages && allItemsPages.length && allItemsPages.length>0)
-		// {
-		// 	var lastItemsPage = allItemsPages[allItemsPages.length-1];
-		// 	var u = lastItemsPage.nextLink;
-		// 	if(u)
-		// 	{
-		// 		var cb = function(r){getJSON();};	
-				
-		// 	}
-		// }
-
+	
 } // end of class
