@@ -349,7 +349,7 @@ function GoogleDriveClient(access_token) {
 	};
 
 	
-	this.getAllSearchResults=function(String query)
+	this.getAllSearchResults=function(query)
 	{
 		var lastcb2 = function(d)
 		{
