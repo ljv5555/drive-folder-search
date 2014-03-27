@@ -281,6 +281,7 @@ function GoogleDriveClient(access_token) {
 			return _.map(a,function(i){return titles[ids.indexOf(i)];});
 		});
 		var allFolderElements = [];
+		var allFolderElementsSortBy = [];
 		_.each(allFolderIds,function(e,i){
 			var fida = e;
 			var fta = allFolderTitles[i];
@@ -288,10 +289,11 @@ function GoogleDriveClient(access_token) {
 			folderElement.setAttribute('data-folder-id',_.last(fida));
 			folderElement.setAttribute('data-folder-ids',fida.join(' '));
 			// TODO: - use template to make a link for each folder title 
+			allFolderElementsSortBy.push(fta.join('').toUpperCase());
 			folderElement.innerHTML=_.escape(fta.join(' / '));
 			allFolderElements.push(folderElement);
 		});
-		_(allFolderElements).sortBy(function(e){return _.unescape(e.innerHTML);});
+		_(allFolderElements).sortBy(function(e,i){return allFolderElementsSortBy[i];});
 		var allFolderElementsWrapper = document.createElement('div');
 		allFolderElementsWrapper.className='allFolderElements';
 		_.each(allFolderElements,function(e){allFolderElementsWrapper.appendChild(e);});
