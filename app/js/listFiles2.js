@@ -357,7 +357,7 @@ function GoogleDriveClient(access_token) {
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":""+query};
-		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);	
+		getJSON(driveFilesUrl,function(r){getNextSearchResultsPage(r,lastcb2);},false,q);	
 	};
 	
 } // end of class
