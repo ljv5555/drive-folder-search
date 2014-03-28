@@ -6,9 +6,8 @@
 */
 
 .allFolderElements > *:before{
-	background-image:url(images/drive-folder-search-icon-16.png');
-	width:16px;
-	height:16px;
+	content:url('http://ljv5555.github.io/drive-folder-search/app/images/drive-folder-search-icon-16.png');
+	margin:5px 5px 5px 5px;
 }
 
 body{
