@@ -5,7 +5,7 @@
 .octicon-git-branch-create:before{content:'\f098'}
 */
 
-.allFolderElements .folder-title *:before{
+.allFolderElements .folder-title:before{
 	content:url('../images/drive-folder-search-icon-16.png');
 	margin:5px 5px 5px 5px;
 }
