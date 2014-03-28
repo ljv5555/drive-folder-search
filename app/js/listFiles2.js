@@ -353,7 +353,7 @@ function GoogleDriveClient(access_token) {
 	{
 		var lastcb2 = function(d)
 		{
-			jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
+			jQuery('.r').html(objectArrayToTable(_.flatten(_.map(allSearchResultsPages,function(i){return i.items;}),true)));
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":""+query};
