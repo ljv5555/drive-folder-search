@@ -357,16 +357,28 @@ function GoogleDriveClient(access_token) {
 	};
 
 	var allSearchResultsItems = [];
-	this.getAllSearchResults=function(query)
+	var getAllSearchResults=function(query)
 	{
-		var lastcb2 = function(d)
+		var lastcb2 = function(d,cb)
 		{
 			
 			allSearchResultsItems=_.flatten(_.map(allSearchResultsPages,function(i){return i.items;}),true);
 			jQuery('.r').html(objectArrayToTable(allSearchResultsItems));
 		};
+		if(cb){lastcb2=cb;}
 		var q = {"q":""+query};
 		getJSON(driveFilesUrl,function(r){getNextSearchResultsPage(r,lastcb2);},false,q);	
 	};
-	
+	this.g_getAllSearchResults = function(query,cb)
+	{
+		return getAllSearchResults(query,cb);
+	};
+	this.runQuery=function(query)
+	{
+		var cb = function(d)
+		{
+			
+		};
+		return getAllSearchResults(query,cb);
+	};
 } // end of class
