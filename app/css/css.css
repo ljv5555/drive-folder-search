@@ -5,6 +5,12 @@
 .octicon-git-branch-create:before{content:'\f098'}
 */
 
+.allFolderElements > *:before{
+	background-image:url(images/drive-folder-search-icon-16.png');
+	width:16px;
+	height:16px;
+}
+
 body{
 min-height:1800px;
 background-size:100% 2000px;
