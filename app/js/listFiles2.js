@@ -285,7 +285,7 @@ function GoogleDriveClient(access_token) {
 			var fida = _.clone(e);
 			var fta = _.clone(allFolderTitles[i]);
 			var folderElementTitle = document.createElement('div');
-			var folderElementChilderen = document.createElement('div');
+			var folderElementChildren = document.createElement('div');
 			folderElementTitle.className = 'folder-title';
 			folderElementChildren.className = 'folder-children';
 			
