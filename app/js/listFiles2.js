@@ -377,7 +377,7 @@ function GoogleDriveClient(access_token) {
 	{
 		var cb = function(d)
 		{
-			jQuery('.r').Text('done. '+d.length +' results found.');
+			jQuery('.r').text('done. '+d.length +' results found.');
 		};
 		return getAllSearchResults(query,cb);
 	};
