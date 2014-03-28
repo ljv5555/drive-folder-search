@@ -357,7 +357,7 @@ function GoogleDriveClient(access_token) {
 	};
 
 	var allSearchResultsItems = [];
-	var getAllSearchResults=function(query)
+	var getAllSearchResults=function(query,cb)
 	{
 		var lastcb2 = function(d,cb)
 		{
