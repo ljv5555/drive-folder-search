@@ -10,6 +10,11 @@
 	margin:5px 5px 5px 5px;
 }
 
+.search-form input{
+	width: 80%;
+	
+}
+
 body{
 min-height:1800px;
 background-size:100% 2000px;
