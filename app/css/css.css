@@ -6,7 +6,7 @@
 */
 
 .allFolderElements > *:before{
-	content:url('../images/drive-folder-search-icon-32.png');
+	content:url('../images/drive-folder-search-icon-16.png');
 	margin:5px 5px 5px 5px;
 }
 
