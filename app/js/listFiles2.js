@@ -284,18 +284,17 @@ function GoogleDriveClient(access_token) {
 		_.each(allFolderIds,function(e,i){
 			var fida = _.clone(e);
 			var fta = _.clone(allFolderTitles[i]);
-			var folderElement = document.createElement('li');
+			var folderElement = document.createElement('div');
 			folderElement.setAttribute('data-folder-id',_.last(fida));
 			folderElement.setAttribute('data-folder-ids',fida.join(' '));
 			// TODO: - use template to make a link for each folder title 
 			var afesb = (fta.join('').toUpperCase());
 			folderElement.setAttribute('data-folder-sortby',afesb);
-			folderElement.innerHTML=_.escape(fta.join(' / '));
+			folderElement.innerHTML='<img src="style="images/drive-folder-search-icon-16.png"/>'+_.escape(fta.join(' / '));
 			allFolderElements.push(folderElement);
 		});
 		var allFolderElementsAreSorted = _.sortBy(allFolderElements,function(e,i){return e.getAttribute('data-folder-sortby');});
-		var allFolderElementsWrapper = document.createElement('ul');
-		allFolderElementsWrapper.style="list-style-image:url('images/drive-folder-search-icon-16.png');";
+		var allFolderElementsWrapper = document.createElement('div');
 		allFolderElementsWrapper.className='allFolderElements';
 		for(i=0;i<allFolderElementsAreSorted.length;i++){allFolderElementsWrapper.appendChild(allFolderElementsAreSorted[i]);}
 		return allFolderElementsWrapper;
