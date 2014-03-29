@@ -146,6 +146,8 @@ background: -ms-linear-gradient(grey,silver,silver,grey);
 background: -moz-linear-gradient(grey,silver,silver,grey);
 background: -o-linear-gradient(grey,silver,silver,grey);
 background: linear-gradient(grey,silver,silver,grey);
+font-size:.6em;
+font-weight:800;
 }
 .forkme:hover{
     box-shadow: 0px 0px 30px 3px rgba(140,150,255,200);
