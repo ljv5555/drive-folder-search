@@ -330,7 +330,6 @@ function GoogleDriveClient(access_token) {
 	
 	this.showChildrenFolders=function(lastcb)
 	{
-		jQuery('.search-form').slideUp();
 		var lastcb2 = function(d)
 		{
 			jQuery('.r').append(getFolderElementsSorted());

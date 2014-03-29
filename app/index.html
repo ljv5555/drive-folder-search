@@ -95,9 +95,9 @@ This app is under development. Please check back weekly. The old version is avai
 </div>
 <div id="f1" class="f1div">
  
-<div class="search-form">
+<div class="search-form" style="display:none;">
 	<input type="search" value="textContent contains 'txt'" name="search" id="search"/>
-	<button type="button" onclcick="googleDriveClient.search(jQuery('#search').val());">search</button>
+	<button type="button" onclcick="window['googleDriveClient'].search(jQuery('#search').val());">search</button>
 </div>
 
 <div class="r"></div>
