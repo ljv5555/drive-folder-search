@@ -1,0 +1,161 @@
+<div style="border:5px solid red">
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value Type</th>
+<th>Operators</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td><code>contains</code>, <code>=</code>, <code>!=</code></td>
+<td>Title of the file.</td>
+</tr>
+<tr>
+<td><code>fullText</code></td>
+<td>string</td>
+<td><code>contains</code></td>
+<td>Full text of the file including title, description, and content.</td>
+</tr>
+<tr>
+<td><code>mimeType</code></td>
+<td>string</td>
+<td><code>=</code>, <code>!=</code></td>
+<td>MIME type of the file.</td>
+</tr>
+<tr>
+<td><code>modifiedDate</code></td>
+<td>date</td>
+<td><code>&lt;=</code>, <code>&lt;</code>, <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code></td>
+<td>Date of the last modification of the file.</td>
+</tr>
+<tr>
+<td><code>lastViewedByMeDate</code></td>
+<td>date</td>
+<td><code>&lt;=</code>, <code>&lt;</code>, <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&gt;=</code></td>
+<td>Date that the user last viewed a file.</td>
+</tr>
+<tr>
+<td><code>trashed</code></td>
+<td>boolean</td>
+<td><code>=</code>, <code>!=</code></td>
+<td>Whether the file is in the trash or not.</td>
+</tr>
+<tr>
+<td><code>starred</code></td>
+<td>boolean</td>
+<td><code>=</code>, <code>!=</code></td>
+<td>Whether the file is starred or not.</td>
+</tr>
+<tr>
+<td><code>parents</code></td>
+<td>collection</td>
+<td><code>in</code></td>
+<td>Whether the parents collection contains the specified ID.</td>
+</tr>
+<tr>
+<td><code>owners</code></td>
+<td>collection</td>
+<td><code>in</code></td>
+<td>Users who own the file.</td>
+</tr>
+<tr>
+<td><code>writers</code></td>
+<td>collection</td>
+<td><code>in</code></td>
+<td>Users who have permission to modify the file.</td>
+</tr>
+<tr>
+<td><code>readers</code></td>
+<td>collection</td>
+<td><code>in</code></td>
+<td>Users who have permission to read the file.</td>
+</tr>
+<tr>
+<td><code>sharedWithMe</code></td>
+<td>boolean</td>
+<td><code>=</code>, <code>!=</code></td>
+<td>Files that have been shared with the authorized user.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="value_types">Value types</h2>
+<table>
+<thead>
+<tr>
+<th>Value Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>Surround with single quotes <code>'</code>. Escape single quotes in queries with <code>\'</code>, e.g., <code>'Valentine\'s Day'</code>.</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td>Date</td>
+<td><a href="http://tools.ietf.org/html/rfc3339">RFC 3339</a> format, default timezone is UTC, e.g., <code>2012-06-04T12:00:00-08:00</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operators">Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contains</code></td>
+<td>The content of one string is present in the other.</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>The content of a string or boolean is equal to the other.</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>The content of a string or boolean is not equal to the other.</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>A date is earlier than another.</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>A date is earlier than or equal to another.</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>A date is later than another.</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>A date is later than or equal to another.</td>
+</tr>
+<tr>
+<td><code>in</code></td>
+<td>An element is contained within a collection.</td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td>Join two search clauses.</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Negates a search clause.</td>
+</tr>
+</tbody>
+</table>
+</div>

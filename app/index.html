@@ -19,6 +19,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <script>
 jQuery.noConflict();
+jQuery(function(){jQuery('.syntax-help-details').load("syntax-help-details.html");});
 </script>
 <script src="js/oauth2.js"></script>
 <script src="js/listFiles2.js"></script>
@@ -102,6 +103,8 @@ This app is under development. Please check back weekly. The old version is avai
 		<h3>Example Queries</h3>
 		<input type="search" value="fullText contains 'the string of text contained in the document'"/>
 		<input type="search" value="title contains '.txt' and modifiedDate > '2012-06-04T12:00:00'"/>
+		<h3>Syntax Details</h3>
+		<div class="syntax-help-details"></div>
 	</div>
 </div>
 
