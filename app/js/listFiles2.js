@@ -330,13 +330,14 @@ function GoogleDriveClient(access_token) {
 	
 	this.showChildrenFolders=function(lastcb)
 	{
+		jQuery('.search-form').slideUp();
 		var lastcb2 = function(d)
 		{
 			jQuery('.r').append(getFolderElementsSorted());
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
-		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);},false,q);		
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);jQuery('.search-form').slideDown();},false,q);		
 	};
 	
 	
