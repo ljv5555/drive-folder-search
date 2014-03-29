@@ -68,13 +68,6 @@ var driveClientInit = function()
 */
 // var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
 		
-function runSearch()
-{
-	alert(1);
-	window['googleDriveClient'].search(jQuery('#search').val());
-	alert(2);
-}	
-    
 </script>
 </head>
 <body>
@@ -102,7 +95,7 @@ This app is under development. Please check back weekly. The old version is avai
  
 <div class="search-form" style="display:none;">
 	<input type="search" value="textContent contains 'txt'" name="search" id="search"/>
-	<button type="button" onclcick="runSearch();">search</button>
+	<button type="button" onclick="window['googleDriveClient'].search(jQuery('#search').val());">search</button>
 </div>
 
 <div class="r"></div>
