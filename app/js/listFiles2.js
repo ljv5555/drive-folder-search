@@ -373,7 +373,7 @@ function GoogleDriveClient(access_token) {
 	{
 		return getAllSearchResults(query,cb);
 	};
-	this.runQuery=function(query)
+	this.search=function(query)
 	{
 		var cb = function(d)
 		{

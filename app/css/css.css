@@ -9,10 +9,15 @@
 	content:url('../images/drive-folder-search-icon-16.png');
 	margin:5px 5px 5px 5px;
 }
-
+.hidden{
+	display:none;
+}
 .search-form input{
 	width: 80%;
-	
+}
+.search-form input, .search-form button{
+background: linear-gradient(#555,#333,#555);
+color:white;
 }
 
 body{
