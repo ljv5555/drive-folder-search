@@ -222,3 +222,6 @@ background: linear-gradient(grey,silver,silver,grey);
 height: 50px;
 padding-top: 15px;
 }
+.search-form .syntax-help{
+	font-size:.8em;
+}
