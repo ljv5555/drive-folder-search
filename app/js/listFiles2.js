@@ -378,7 +378,7 @@ function GoogleDriveClient(access_token) {
 		
 		var cb = function(d)
 		{
-			var items = _.flatten(_.pluck(d,'items')),true);
+			var items = _.flatten(_.pluck(d,'items'),true);
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
 			var elements = [];
