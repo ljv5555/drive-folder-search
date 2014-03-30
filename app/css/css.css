@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 
+.search-form .syntax-help div,.search-form .syntax-help h3
+{
+	background:silver !important;
+}
+
 /*
 .octicon-git-branch-create:before{content:'\f098'}
 */
