@@ -373,12 +373,14 @@ function GoogleDriveClient(access_token) {
 	{
 		return getAllSearchResults(query,cb);
 	};
-	this.search=function(query)
+	this.search=function(query,lcb)
 	{
+		
 		var cb = function(d)
 		{
 			jQuery('.r').text('done. '+d.length +' results found.');
 		};
+		if(lcb){cb=lcb;}
 		return getAllSearchResults(query,cb);
 	};
 } // end of class
