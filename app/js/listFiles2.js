@@ -384,10 +384,10 @@ function GoogleDriveClient(access_token) {
 			var itemsids = _.unique(_.pluck(itemst,'id'));
 			var items = [];
 			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(itemsids)]);});
-			window.rv.push({'itemst',itemst});
-			window.rv.push({'itemsidsall',itemsidsall});
-			window.rv.push({'itemsids',itemsids});
-			window.rv.push({'items',items});
+			window.rv.push({'itemst':itemst});
+			window.rv.push({'itemsidsall':itemsidsall});
+			window.rv.push({'itemsids':itemsids});
+			window.rv.push({'items':items});
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
 			var elements = [];
