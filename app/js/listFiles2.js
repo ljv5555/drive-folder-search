@@ -383,7 +383,7 @@ function GoogleDriveClient(access_token) {
 			var itemsidsall = _.pluck(itemst,'id');
 			var itemsids = _.unique(_.pluck(itemst,'id'));
 			var items = [];
-			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(itemsids)]);});
+			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(iid)]);});
 			window.rv.push({'itemst':itemst});
 			window.rv.push({'itemsidsall':itemsidsall});
 			window.rv.push({'itemsids':itemsids});
