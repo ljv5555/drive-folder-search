@@ -378,10 +378,15 @@ function GoogleDriveClient(access_token) {
 		
 		var cb = function(d)
 		{
-			var items = _.flatten(_.pluck(d,'items'),true);
+			var itemst = _.flatten(_.pluck(d,'items'),true);
+			var itemsidsall = _.pluck(items,'id');
+			var itemsids = _unique(_.pluck(items,'id'));
+			var items = [];
+			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(itemsids)]);});
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
 			var elements = [];
+			
 			
 		};
 		if(lcb){cb=lcb;}
