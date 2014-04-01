@@ -398,7 +398,7 @@ function GoogleDriveClient(access_token) {
 		return getAllSearchResults(query,cb);
 	};
 	
-	this.getItemForEachParentId(items)
+	this.getItemForEachParentId=function(items)
 	{
 		var i=0;
 		var j=0;
