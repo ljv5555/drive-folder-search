@@ -419,7 +419,7 @@ function GoogleDriveClient(access_token) {
 				e.attr('id',ca.itemid);
 				e.attr('data-sr-document-parentid',ca.parentid);
 				e.attr('class','sr-document');
-				e.text(title);
+				e.text(ca.title);
 				jQuery("*[data-folder-id='"+ca.parentid+"'] .folder-children").append(e);
 			}
 			
