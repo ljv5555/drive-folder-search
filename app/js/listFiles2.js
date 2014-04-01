@@ -397,4 +397,28 @@ function GoogleDriveClient(access_token) {
 		if(lcb){cb=lcb;}
 		return getAllSearchResults(query,cb);
 	};
+	
+	this.getItemForEachParentId(items)
+	{
+		var i=0;
+		var j=0;
+		var rtn = [];
+		for(i=0;i<items.length;i++)
+		{
+			var item = items[i];
+			var parents = item.parents;
+			for(j=0;j<parents.length;j++)
+			{
+				var parent = parents[j];
+				var ca = {"itemid":"","parentid":"","title":""};
+				ca.itemid=(_.clone(item.id));
+				ca.parentid=(_.clone(parent.id));
+				ca.title=(_.clone(item.title));
+				rtn.push(ca);
+			}
+			
+		}
+		return rtn;
+	};
+	
 } // end of class
