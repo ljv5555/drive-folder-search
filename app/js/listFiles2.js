@@ -390,6 +390,9 @@ function GoogleDriveClient(access_token) {
 			window.rv.push({'items':items});
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
+			setTimeout(function(){
+				window.googleDriveClient.getItemForEachParentId(window.rv[3].items);
+			},2000);
 			var elements = [];
 			
 			
