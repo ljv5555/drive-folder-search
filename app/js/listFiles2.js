@@ -9,7 +9,7 @@ function GoogleDriveClient(access_token) {
 	var setrv=function(n,v){window.rv[n]=v;};
 	
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
-	
+	var folderLinkUrl='https://drive.google.com/folderview?usp=drivesdk&id=';
 	
 	if ((!jQuery) || (!_)) {
 		var error = 'Error: You must include jQuery and underscore to use this script.';
