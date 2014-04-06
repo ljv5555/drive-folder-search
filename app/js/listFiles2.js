@@ -95,6 +95,11 @@ function GoogleDriveClient(access_token) {
         return rtn;
     };
     
+    var filterFoldersShown()
+    {
+    	jQuery("*[data-folder-ids]").slideUp(1); 
+    	_.each(getIdsFromUrl(),function(e){jQuery("*[data-folder-ids*='"+e+"']").slideDown();});
+    };
     /**
      * 
      * @param o
@@ -346,6 +351,14 @@ function GoogleDriveClient(access_token) {
 		var lastcb2 = function(d)
 		{
 			jQuery('.r').append(getFolderElementsSorted());
+			if(getFolderIdsFromUrl().length>0)
+			{
+				filterFoldersShown();
+			}
+			else
+			{
+				alert('No folder ids were passed in. Please launch from google drive.')
+			}
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
