@@ -19,7 +19,7 @@ function GoogleDriveClient(access_token) {
 	
 	var addLinksToFolders = function()
 	{
-		var folderTitles = jQuery('.allFolderElements .folderTitle');
+		var folderTitles = jQuery('.allFolderElements .folder-title');
 		_.each(folderTitles,function(e){
 			var ft = jQuery(e);
 			var ftp = ft.parent();
