@@ -28,6 +28,7 @@ function GoogleDriveClient(access_token) {
 			ft.html(nc);
 		});
 	};
+	this.p_addLinksToFolders = function(){addLinksToFolders();};
 	
     var prependToEach=function(valuesToPrepend, originalArray)
     {
@@ -366,7 +367,7 @@ function GoogleDriveClient(access_token) {
 			if(getIdsFromUrl().length>0)
 			{
 				filterFoldersShown();
-				setTimeout(function(){addLinksToFolders();},2000);
+				//setTimeout(function(){addLinksToFolders();},2000);
 				
 			}
 			else
