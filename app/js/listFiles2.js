@@ -17,6 +17,18 @@ function GoogleDriveClient(access_token) {
 		return error;
 	}
 	
+	var addLinksToFolders = function()
+	{
+		var folderTitles = jQuery('.allFolderElements .folderTitle');
+		_.each(folderTitles,function(e){
+			var ft = jQuery(e);
+			var ftp = ft.parent();
+			var nc = '<a target="_blank" href="'+folderLinkUrl+ftp.attr('data-folder-id')+'">';
+			nc+=ft.html()+'</a>';
+			ft.html(nc);
+		});
+	};
+	
     var prependToEach=function(valuesToPrepend, originalArray)
     {
         var rtn = [];
@@ -353,7 +365,9 @@ function GoogleDriveClient(access_token) {
 			jQuery('.r').append(getFolderElementsSorted());
 			if(getIdsFromUrl().length>0)
 			{
+				addLinksToFolders();
 				filterFoldersShown();
+				
 			}
 			else
 			{
