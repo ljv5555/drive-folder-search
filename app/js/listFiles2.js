@@ -367,7 +367,7 @@ function GoogleDriveClient(access_token) {
 			if(getIdsFromUrl().length>0)
 			{
 				filterFoldersShown();
-				//setTimeout(function(){addLinksToFolders();},2000);
+				addLinksToFolders();
 				
 			}
 			else
