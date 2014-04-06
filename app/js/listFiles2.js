@@ -95,7 +95,7 @@ function GoogleDriveClient(access_token) {
         return rtn;
     };
     
-    var filterFoldersShown()
+    var filterFoldersShown = function()
     {
     	jQuery("*[data-folder-ids]").slideUp(1); 
     	_.each(getIdsFromUrl(),function(e){jQuery("*[data-folder-ids*='"+e+"']").slideDown();});
