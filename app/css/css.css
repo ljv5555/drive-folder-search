@@ -15,7 +15,7 @@
 */
 
 .allFolderElements .folder-title:before{
-	content:url('../images/drive-folder-search-icon-16.png');
+	content:url('../images/drive-folder-search-icon-32.png');
 	margin:5px 5px 5px 5px;
 }
 .hidden{
