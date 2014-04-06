@@ -351,7 +351,7 @@ function GoogleDriveClient(access_token) {
 		var lastcb2 = function(d)
 		{
 			jQuery('.r').append(getFolderElementsSorted());
-			if(getFolderIdsFromUrl().length>0)
+			if(getIdsFromUrl().length>0)
 			{
 				filterFoldersShown();
 			}
