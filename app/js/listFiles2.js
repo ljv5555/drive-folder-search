@@ -82,6 +82,19 @@ function GoogleDriveClient(access_token) {
         return params;
     };
 
+
+    var getIdsFromUrl = function()
+    {
+        var rtn = [];
+        var urlp = getUrlParams();
+        if(urlp.state)
+        {
+            var state=JSON.parse(urlp.state);
+            if(state.ids){ rtn=state.ids; }
+        }
+        return rtn;
+    };
+    
     /**
      * 
      * @param o
