@@ -29,6 +29,10 @@ function GoogleDriveClient(access_token) {
 		});
 	};
 	this.p_addLinksToFolders = function(){addLinksToFolders();};
+	var addLinksToFiles = function(){
+		
+	};
+	this.p_addLinksToFiles = function(){addLinksToFiles();};
 	
     var prependToEach=function(valuesToPrepend, originalArray)
     {
@@ -422,7 +426,18 @@ function GoogleDriveClient(access_token) {
 			window['rv']=[];
 			var itemst = _.flatten(_.pluck(d,'items'),true);
 			var itemsidsall = _.pluck(itemst,'id');
+			
+			var titlesall = _.pluck(itemst,'title');
+			var alternateLinksAll = _.pluck(itemst,'alternateLink');
+			var webContentLinksAll = _.pluck(itemst,'webContentLink');
+			var iconLinksAll = _.pluck(itemst,'iconLink');
+			window['rv2']={"ids":itemsidsall,"alternateLinks":alternateLinksAll,"webContentLinks":webContentLinksAll,"iconLinks":iconLinksAll,"titles":titlesall};
+			
+			
 			var itemsids = _.unique(_.pluck(itemst,'id'));
+			
+			
+			
 			var items = [];
 			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(iid)]);});
 			window.rv.push({'itemst':itemst});
