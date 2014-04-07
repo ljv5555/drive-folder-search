@@ -455,7 +455,7 @@ function GoogleDriveClient(access_token) {
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
 			setTimeout(function(){
-				window.googleDriveClient.getItemForEachParentId(rv[3].items);
+				/*window.googleDriveClient.*/getItemForEachParentId(rv[3].items);
 			},2000);
 			var elements = [];
 			
@@ -465,7 +465,7 @@ function GoogleDriveClient(access_token) {
 		return getAllSearchResults(query,cb);
 	};
 	
-	this.getItemForEachParentId=function(items)
+	var /*this.*/getItemForEachParentId=function(items)
 	{
 		var i=0;
 		var j=0;
