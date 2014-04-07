@@ -433,7 +433,13 @@ function GoogleDriveClient(access_token) {
 			var alternateLinksAll = _.pluck(itemst,'alternateLink');
 			var webContentLinksAll = _.pluck(itemst,'webContentLink');
 			var iconLinksAll = _.pluck(itemst,'iconLink');
-			rv2={"ids":itemsidsall,"alternateLinks":alternateLinksAll,"webContentLinks":webContentLinksAll,"iconLinks":iconLinksAll,"titles":titlesall};
+			rv2={
+					"ids":itemsidsall,
+					"alternateLinks":alternateLinksAll,
+					"webContentLinks":webContentLinksAll,
+					"iconLinks":iconLinksAll,
+					"titles":titlesall
+				};
 			
 			
 			var itemsids = _.unique(_.pluck(itemst,'id'));
