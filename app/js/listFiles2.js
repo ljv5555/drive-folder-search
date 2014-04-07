@@ -425,7 +425,7 @@ function GoogleDriveClient(access_token) {
 		
 		var cb = function(d)
 		{
-			window['rv']=[];
+			rv=[];
 			var itemst = _.flatten(_.pluck(d,'items'),true);
 			var itemsidsall = _.pluck(itemst,'id');
 			
