@@ -4,9 +4,11 @@
  * @returns
  */
 function GoogleDriveClient(access_token) {
+	var rv;
+	var rv2;
 	
-	window.rv={"_desc":"this is rv"};
-	var setrv=function(n,v){window.rv[n]=v;};
+	rv={"_desc":"this is rv"};
+	var setrv=function(n,v){rv[n]=v;};
 	
 	var driveFilesUrl = 'https://content.googleapis.com/drive/v2/files';
 	var folderLinkUrl='https://drive.google.com/folderview?usp=drivesdk&id=';
@@ -431,7 +433,7 @@ function GoogleDriveClient(access_token) {
 			var alternateLinksAll = _.pluck(itemst,'alternateLink');
 			var webContentLinksAll = _.pluck(itemst,'webContentLink');
 			var iconLinksAll = _.pluck(itemst,'iconLink');
-			window['rv2']={"ids":itemsidsall,"alternateLinks":alternateLinksAll,"webContentLinks":webContentLinksAll,"iconLinks":iconLinksAll,"titles":titlesall};
+			rv2={"ids":itemsidsall,"alternateLinks":alternateLinksAll,"webContentLinks":webContentLinksAll,"iconLinks":iconLinksAll,"titles":titlesall};
 			
 			
 			var itemsids = _.unique(_.pluck(itemst,'id'));
@@ -440,14 +442,14 @@ function GoogleDriveClient(access_token) {
 			
 			var items = [];
 			_.each(itemsids,function(iid){items.push(itemst[itemsidsall.indexOf(iid)]);});
-			window.rv.push({'itemst':itemst});
-			window.rv.push({'itemsidsall':itemsidsall});
-			window.rv.push({'itemsids':itemsids});
-			window.rv.push({'items':items});
+			rv.push({'itemst':itemst});
+			rv.push({'itemsidsall':itemsidsall});
+			rv.push({'itemsids':itemsids});
+			rv.push({'items':items});
 			var r = jQuery('.r');
 			r.html('<div>'+items.length+' results found.</div>'+r.html());
 			setTimeout(function(){
-				window.googleDriveClient.getItemForEachParentId(window.rv[3].items);
+				window.googleDriveClient.getItemForEachParentId(rv[3].items);
 			},2000);
 			var elements = [];
 			
