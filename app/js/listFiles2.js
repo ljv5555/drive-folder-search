@@ -487,6 +487,21 @@ function GoogleDriveClient(access_token) {
 				e.attr('data-sr-document-parentid',ca.parentid);
 				e.attr('class','sr-document');
 				e.text(ca.title);
+				
+				var rv2i = rv2.ids.indexOf(ca.itemid);
+				if(rv2i!=-1)
+				{
+					var a = jQuery('<a/>');
+					a.attr('href',rv2.alternateLinks[rv2i]);
+					a.attr('target','_blank');
+					a.text(ca.title);
+					e.append(a);
+				}
+				else
+				{
+					e.text(ca.title);
+				}
+				
 				jQuery("*[data-folder-id='"+ca.parentid+"'] .folder-children").append(e);
 			}
 			
