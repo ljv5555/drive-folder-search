@@ -486,7 +486,6 @@ function GoogleDriveClient(access_token) {
 				e.attr('id',ca.itemid);
 				e.attr('data-sr-document-parentid',ca.parentid);
 				e.attr('class','sr-document');
-				e.text(ca.title);
 				
 				var rv2i = rv2.ids.indexOf(ca.itemid);
 				if(rv2i!=-1)
