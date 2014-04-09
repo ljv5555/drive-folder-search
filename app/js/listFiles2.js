@@ -472,6 +472,7 @@ function GoogleDriveClient(access_token) {
 	
 	var /*this.*/getItemForEachParentId=function(items)
 	{
+		//jQuery("*[data-folder-id]").slideUp();
 		var i=0;
 		var j=0;
 		var rtn = [];
@@ -507,6 +508,7 @@ function GoogleDriveClient(access_token) {
 				}
 				
 				jQuery("*[data-folder-id='"+ca.parentid+"'] .folder-children").append(e);
+				//jQuery("*[data-folder-id='"+ca.parentid+"']").slideDown();
 			}
 			
 		}
