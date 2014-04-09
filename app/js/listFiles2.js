@@ -470,7 +470,11 @@ function GoogleDriveClient(access_token) {
 	this.getRv=function(){return rv;};
 	this.getRv2=function(){return rv2;};
 	
-	var completeFiltering=function(){};
+	var completeFiltering=function(){
+		jQuery('*[data-folder-filter-result]').hide().has('*[data-item-result]').slideDown();
+		var cnt = jQuery('*[data-folder-filter-result] *[data-item-result]').length;
+		jQuery('.infocontent').text(cnt+' filtered results found.');
+	};
 	
 	var /*this.*/getItemForEachParentId=function(items)
 	{
