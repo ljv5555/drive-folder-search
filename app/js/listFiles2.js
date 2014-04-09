@@ -465,6 +465,9 @@ function GoogleDriveClient(access_token) {
 		return getAllSearchResults(query,cb);
 	};
 	
+	this.getRv=function(){return rv;};
+	this.getRv2=function(){return rv2;};
+	
 	var /*this.*/getItemForEachParentId=function(items)
 	{
 		var i=0;
