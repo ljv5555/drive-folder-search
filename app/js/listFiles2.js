@@ -453,7 +453,8 @@ function GoogleDriveClient(access_token) {
 			rv.push({'itemsids':itemsids});
 			rv.push({'items':items});
 			var r = jQuery('.r');
-			r.html('<div>'+items.length+' results found.</div>'+r.html());
+			var rstatus = jQuery('.r .status');
+			rstatus.html(items.length+' unfiltered results found.'+r.html());
 			setTimeout(function(){
 				/*window.googleDriveClient.*/getItemForEachParentId(rv[3].items);
 			},2000);
@@ -489,7 +490,7 @@ function GoogleDriveClient(access_token) {
 				e.attr('id',ca.itemid);
 				e.attr('data-sr-document-parentid',ca.parentid);
 				e.attr('class','sr-document');
-				
+				e.attr('data-sr-item-json',JSON.stringify(item));
 				var rv2i = rv2.ids.indexOf(ca.itemid);
 				if(rv2i!=-1)
 				{
