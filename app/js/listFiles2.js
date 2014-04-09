@@ -470,6 +470,8 @@ function GoogleDriveClient(access_token) {
 	this.getRv=function(){return rv;};
 	this.getRv2=function(){return rv2;};
 	
+	var completeFiltering=function(){};
+	
 	var /*this.*/getItemForEachParentId=function(items)
 	{
 		//jQuery("*[data-folder-id]").slideUp();
@@ -493,6 +495,7 @@ function GoogleDriveClient(access_token) {
 				e.attr('data-sr-document-parentid',ca.parentid);
 				e.attr('class','sr-document');
 				e.attr('data-sr-item-json',JSON.stringify(item));
+				e.attr('data-item-result','1');
 				var rv2i = rv2.ids.indexOf(ca.itemid);
 				if(rv2i!=-1)
 				{
@@ -508,10 +511,12 @@ function GoogleDriveClient(access_token) {
 				}
 				
 				jQuery("*[data-folder-id='"+ca.parentid+"'] .folder-children").append(e);
+				
 				//jQuery("*[data-folder-id='"+ca.parentid+"']").slideDown();
 			}
 			
 		}
+		setTimeout(function(){completeFiltering();},10);
 		return rtn;
 	};
 	
