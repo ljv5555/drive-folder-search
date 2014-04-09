@@ -453,7 +453,7 @@ function GoogleDriveClient(access_token) {
 			rv.push({'itemsids':itemsids});
 			rv.push({'items':items});
 			var r = jQuery('.r');
-			var rstatus = jQuery('.r .status');
+			var rstatus = jQuery('.rstatus');
 			rstatus.html(items.length+' unfiltered results found.'+r.html());
 			setTimeout(function(){
 				/*window.googleDriveClient.*/getItemForEachParentId(rv[3].items);
