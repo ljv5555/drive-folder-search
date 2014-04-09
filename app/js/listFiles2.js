@@ -117,7 +117,7 @@ function GoogleDriveClient(access_token) {
     var filterFoldersShown = function()
     {
     	jQuery("*[data-folder-ids]").slideUp(1); 
-    	_.each(getIdsFromUrl(),function(e){jQuery("*[data-folder-ids*='"+e+"']").slideDown();});
+    	_.each(getIdsFromUrl(),function(e){jQuery("*[data-folder-ids*='"+e+"']").slideDown().attr('data-folder-filter-result','1');});
     };
     /**
      * 
