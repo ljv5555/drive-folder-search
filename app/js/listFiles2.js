@@ -454,7 +454,8 @@ function GoogleDriveClient(access_token) {
 			rv.push({'items':items});
 			var r = jQuery('.r');
 			var rstatus = jQuery('.rstatus');
-			rstatus.html(items.length+' unfiltered results found.'+r.html());
+			rstatus.html('<span class="infoicon"></span>'
+			         +'<span class="infocontent">'+items.length+' unfiltered results found.</span>');
 			setTimeout(function(){
 				/*window.googleDriveClient.*/getItemForEachParentId(rv[3].items);
 			},2000);
