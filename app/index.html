@@ -90,8 +90,8 @@ This app is under development. Please check back weekly. The old version is avai
  
 <div class="search-form" style="display:none;">
 	<form id="sform" name="sform" onsubmit="(function(){googleDriveClient.search(jQuery('#search').val()); return false;})()"
-	<input type="text" onfocus="jQuery('.syntax-help').slideDown();" onblur="jQuery('.syntax-help').slideUp();" value="not fullText contains 'txt'" name="search" id="search"/>
-	<input type='submit' value='search'/>
+	<input id="searchtext" type="search" name="searchtext" onfocus="jQuery('.syntax-help').slideDown();" onblur="jQuery('.syntax-help').slideUp();" value="not fullText contains 'txt'" name="search" id="search"/>
+	<input type='submit' id="searchsubmit" name="searchsubmit" value='search'/>
 	<div class="syntax-help" style="display:none;">
 		<h3>Query Syntax</h3>
 		<h5>The query syntax to be used above is to be in the <a target="_blank" href="https://developers.google.com/drive/web/search-parameters">Google Drive SDK search format</a>.</h5>
