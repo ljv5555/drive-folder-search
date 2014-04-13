@@ -21,7 +21,7 @@
 .hidden{
 	display:none;
 }
-.search-form input{
+.search-form input[type='text']{
 	width: 80%;
 }
 .search-form input, .search-form button{
