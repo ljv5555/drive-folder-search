@@ -378,7 +378,7 @@ function GoogleDriveClient(access_token) {
 			}
 			else
 			{
-				alert('No folder ids were passed in. Please launch from google drive.')
+				//alert('No folder ids were passed in. Please launch from google drive.')
 			}
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
