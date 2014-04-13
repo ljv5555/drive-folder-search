@@ -90,7 +90,7 @@ This app is under development. Please check back weekly. The old version is avai
  
 <div class="search-form" style="display:none;">
 	<form id="sform" name="sform" onsubmit="(function(){googleDriveClient.search(jQuery('#search').val()); return false;})()"
-	<input type="search" onfocus="jQuery('.syntax-help').slideDown();" onblur="jQuery('.syntax-help').slideUp();" value="fullText contains 'txt'" name="search" id="search"/>
+	<input type="text" onfocus="jQuery('.syntax-help').slideDown();" onblur="jQuery('.syntax-help').slideUp();" value="not fullText contains 'txt'" name="search" id="search"/>
 	<input type='submit' value='search'/>
 	<div class="syntax-help" style="display:none;">
 		<h3>Query Syntax</h3>
@@ -101,6 +101,7 @@ This app is under development. Please check back weekly. The old version is avai
 		<h3 style="display:none;">Syntax Details</h3>
 		<div style="display:none;" class="syntax-help-details"></div>
 	</div>
+	</form>
 </div>
 <div class='rstatusw'><div class="rstatus"></div></div>
 <div class="r"></div>
