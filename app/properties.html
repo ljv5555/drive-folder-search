@@ -3,3 +3,142 @@
 https://content.googleapis.com/drive/v2/files/0B9ICicDg0C8nNlNlMHlVaHRmX1U/properties
 
 -->
+<!doctype html>
+<html>
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<link rel="icon" href="images/drive-folder-search-icon-16.png" sizes="16x16" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-64.png" sizes="64x64" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-128.png" sizes="128x128" type="image/png" />
+<link rel="icon" href="images/drive-folder-search-icon-256.png" sizes="256x256" type="image/png" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script>
+jQuery.noConflict();
+jQuery(function(){jQuery('.syntax-help-details').load("syntax-help-details.html");});
+</script>
+<script src="js/oauth2.js"></script>
+<script src="js/listFiles2.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<!--
+<script src="js/listFiles.js"></script>
+-->
+
+<!-- script src="js/driveFolderSearch.js"></script -->
+<script>
+    
+window['googleDriveClient']=null;
+
+var googleDriveClient = null;
+var driveClientInit = function()
+{
+  jQuery('.listFoldersResult').slideDown();
+  googleDriveClient = new GoogleDriveClient();
+  googleDriveClient.setToken(gapi.auth.getToken().access_token);
+  
+  //jQuery('.listFoldersResult').slideUp();
+};
+/*
+var lastcb = function()
+{
+	jQuery('.r').html(
+		'<pre>'+JSON.stringify(window.googleDriveClient.getAllItemsPages())+'</pre>'
+		);
+};
+setTimeout(function(){lastcb();},5000);
+*/
+
+
+/*
+
+window['googleDriveClient']=null;
+
+var googleDriveClient = null;
+var driveClientInit = function()
+{
+  jQuery('.listFoldersResult').slideDown();
+  googleDriveClient = new GoogleDriveClient();
+  googleDriveClient.setToken(gapi.auth.getToken().access_token);
+  jQuery('.listFoldersResult').slideUp();
+};
+
+*/
+// var lastcb = function(r){jQuery(r).html('<pre>'+JSON.stringify(r)+'</pre>');};
+
+</script>
+</head>
+<body>
+<div class="forkme">
+    <a target="_blank" href="https://github.com/ljv5555/drive-folder-search"><span>&#xF098;</span><span>Fork me on GitHub</span></a>
+</div>
+<div class="logout">
+<span id="plusone"><g:plusone></g:plusone></span>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js" 
+    async="true">
+        
+    </script>
+<span class="update">
+  <a href="https://github.com/ljv5555/drive-folder-search/tree/gh-pages/app" target="_blank">View Source</a>
+</span>
+<span class="token" style="display:none;"></span>
+<span class="user" style="display:none;"></span>
+<button id="logoutButton" onclick="logout();setTimeout(function(){window.location.href=window.location.href;},1500);">logout</button>
+<button type="button" style="display:none;" id="authorizeButton">Authorize</button>
+</div>
+<div class="construction">
+This app is under development. Please check back weekly. The old version is available <a href="https://sites.google.com/site/drivesearchbyfolder/">here</a>.
+</div>
+<div id="f1" class="f1div">
+ 
+<div class="search-form" style="display:none;">
+	<form id="sform" name="sform" onsubmit="return (function(){googleDriveClient.search(jQuery('#search').val()); return false;})()" >
+	<input type="text" value="not fullText contains 'txt'" name="search" id="search"/>
+	<input type='submit' id="searchsubmit" name="searchsubmit" value='search'/>
+	<span style="font-family:octicons;cursor:pointer;margin:0px 0px;padding:0px 0px;" onclick="jQuery('.syntax-help').toggle();">&#xf02c;</span>
+	<div class="syntax-help" style="display:none;">
+		<h3>Query Syntax</h3>
+		<h5>The query syntax to be used above is to be in the <a target="_blank" href="https://developers.google.com/drive/web/search-parameters">Google Drive SDK search format</a>.</h5>
+		<h3>Example Queries</h3>
+		<h5><input type="text" value="fullText contains 'the string of text contained in the document'"/></h5>
+		<h5><input type="text" value="title contains '.txt' and modifiedDate > '2012-06-04T12:00:00'"/></h5>
+		<h3 style="display:none;">Syntax Details</h3>
+		<div style="display:none;" class="syntax-help-details"></div>
+	</div>
+	</form>
+</div>
+<div class='rstatusw'><div class="rstatus"></div></div>
+<div class="r"></div>
+ <!-- 
+    <button class='baf' 
+     type="button" 
+     onclick="window.googleDriveClient.showChildrenFolders(document.getElementById('flist'));">
+     Show Children folders
+    </button>
+
+<button type="button" 
+  onclick="driveClientInit();jQuery('.baf').slideDown();">
+  Init
+</button>
+<div id="flist"></div>
+-->
+</div> <!-- f1 pink -->
+
+<div class="listFoldersResult" style="display:none;background:silver;">Loading folder list...</div>
+</div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49843033-1', 'ljv5555.github.io');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html> 
