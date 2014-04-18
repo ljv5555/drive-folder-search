@@ -140,5 +140,59 @@ This app is under development. Please check back weekly. The old version is avai
   ga('send', 'pageview');
 
 </script>
+
+
+
+
+<script>
+	
+	
+	
+var getaRequest = function(url, callback, errorCallback, requestParameters, doNotSend, method) {
+		var atoken = gapi.auth.getToken().access_token;
+		var xhr = new XMLHttpRequest();
+		if (requestParameters) {
+			if (url.indexOf('?') == -1) {
+				url = url + '?';
+			} else {
+				url = url + '&';
+			}
+			url = url + jQuery.param(requestParameters);
+		}
+		if(method){}else{method='GET';}
+		xhr.open(method, url);
+		xhr.setRequestHeader('Authorization', 'Bearer ' + atoken);
+		xhr.onload = function() {
+			callback(xhr.responseText);
+		};
+		if (errorCallback) {
+			xhr.onerror = function(p) {
+				errorCallback(p);
+			};
+		} else {
+			xhr.onerror = function(p) {
+				alert('Request error: \n' + url + '\nSee console log.');
+				try {
+					console.log(p);
+				} catch (ex) {
+				}
+			};
+		}
+		if( !doNotSend ){xhr.send();}
+		return xhr;
+	};
+
+function getaProperties(){	
+	
+getaRequest('https://content.googleapis.com/drive/v2/files/0B9ICicDg0C8nNlNlMHlVaHRmX1U/properties',
+/* cb */ function(x1,x2){console.log(JSON.parse(x1));},
+/* ecb */function(){},
+/* par */ {}, 
+/* donotsend */ false, 
+/* method */ 'GET');
+
+};
+	
+</script>
 </body>
 </html> 
