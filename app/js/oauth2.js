@@ -55,10 +55,10 @@
           setTimeout(
         		  function()
           {
-        	  jQuery('.listFoldersResult').slideDown();
+        	  //jQuery('.listFoldersResult').slideDown();
         	  window['googleDriveClient'] = new GoogleDriveClient();
         	  window['googleDriveClient'].setToken(gapi.auth.getToken().access_token);
-        	  jQuery('.listFoldersResult').slideUp();
+        	  //jQuery('.listFoldersResult').slideUp();
         	  setTimeout(function(){
         		  window['googleDriveClient'].showChildrenFolders(function(d){jQuery('.r').html(JSON.stringify(d));});
         	  },1000);
