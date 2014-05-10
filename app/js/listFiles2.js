@@ -515,14 +515,14 @@ function GoogleDriveClient(access_token) {
 		jQuery('*[data-folder-filter-result]').hide().has('*[data-item-result]').slideDown();
 		var cnt = jQuery('*[data-folder-filter-result] *[data-item-result]').length;
 		var urlidlen = getIdsFromUrl().length;
-		var t1 = jQuery('.infocontent').text()+' ';
+		var t1 = '<div>'+jQuery('.infocontent').text()+'</div>';
 		if(urlidlen==0)
 		{
-			t1 += '<br/>No folders passed in from Google Drive; filtering of un-selected folders and subfolders was skipped.';	
+			t1 += '<div>No folders passed in from Google Drive; filtering of un-selected folders and subfolders was skipped.</div>';	
 		}
 		else
 		{
-			t1 += '<br/>'+cnt+' filtered results found.';
+			t1 += '<div>'+cnt+' filtered results found.</div>';
 		}
 		jQuery('.infocontent').html(t1);
 		// TODO: fix file result styles and show icons
