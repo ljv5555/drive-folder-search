@@ -515,6 +515,7 @@ function GoogleDriveClient(access_token) {
 		jQuery('*[data-folder-filter-result]').hide().has('*[data-item-result]').slideDown();
 		var cnt = jQuery('*[data-folder-filter-result] *[data-item-result]').length;
 		jQuery('.infocontent').text(cnt+' filtered results found.');
+		showStatus(false);
 	};
 	
 	var /*this.*/getItemForEachParentId=function(items)
