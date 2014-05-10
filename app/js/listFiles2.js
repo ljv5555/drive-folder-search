@@ -432,6 +432,7 @@ function GoogleDriveClient(access_token) {
 	
 	var getNextSearchResultsPage = function(r,lastcb)
 	{
+		appendStatusHtml('.');
 		allSearchResultsPages.push(r);
 		if(r.nextLink)
 		{
@@ -462,7 +463,7 @@ function GoogleDriveClient(access_token) {
 	};
 	this.search=function(query,lcb)
 	{
-		
+		showStatus('Loading search results...');
 		var cb = function(d)
 		{
 			rv=[];
