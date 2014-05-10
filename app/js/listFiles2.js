@@ -464,6 +464,7 @@ function GoogleDriveClient(access_token) {
 	this.search=function(query,lcb)
 	{
 		showStatus('Loading search results...');
+		jQuery('*.sr-document').remove();
 		var cb = function(d)
 		{
 			rv=[];
