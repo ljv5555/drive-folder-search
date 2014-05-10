@@ -47,14 +47,14 @@ function GoogleDriveClient(access_token) {
 		var sfs = jQuery('.search-form-status');
 		if(message===false)
 		{
-			if(sfs.is('.:visible')){sfs.slideUp();}
-			if(!sf.is('.:visible')){sf.slideDown();}
+			if(sfs.is(':visible')){sfs.slideUp();}
+			if(!sf.is(':visible')){sf.slideDown();}
 		}
 		else
 		{
 			var mt = ''+message;
-			if(sf.is('.:visible')){sf.slideUp();}
-			if(!sfs.is('.:visible')){sfs.slideDown();}
+			if(sf.is(':visible')){sf.slideUp();}
+			if(!sfs.is(':visible')){sfs.slideDown();}
 			sfs.text(mt);
 		}
 	};
