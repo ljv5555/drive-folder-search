@@ -35,6 +35,30 @@ function GoogleDriveClient(access_token) {
 		
 	};
 	this.p_addLinksToFiles = function(){addLinksToFiles();};
+
+	/**
+	 * Hide the form and show status message
+	 * if message===false, show the form and hide status
+	 * 
+	 **/ 
+	var showStatus=function(message)
+	{
+		var sf = jQuery('.search-form');
+		var sfs = jQuery('.search-form-status');
+		if(message===false)
+		{
+			if(sfs.is('.:visible')){sfs.slideUp();}
+			if(!sf.is('.:visible')){sf.slideDown();}
+		}
+		else
+		{
+			var mt = ''+message;
+			if(sf.is('.:visible')){sf.slideUp();}
+			if(!sfs.is('.:visible')){sfs.slideDown();}
+			sfs.text(mt);
+		}
+	};
+	
 	
     var prependToEach=function(valuesToPrepend, originalArray)
     {
@@ -383,7 +407,9 @@ function GoogleDriveClient(access_token) {
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
-		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);jQuery('.search-form').slideDown();},false,q);		
+		
+		showStatus('Loading folder list, please wait...');
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);showStatus(false);},false,q);		
 	};
 	
 	
