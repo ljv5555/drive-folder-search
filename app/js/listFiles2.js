@@ -49,6 +49,7 @@ function GoogleDriveClient(access_token) {
 		{
 			if(sfs.is(':visible')){sfs.slideUp();}
 			if(!sf.is(':visible')){sf.slideDown();}
+			sfs.text('');
 		}
 		else
 		{
@@ -59,6 +60,17 @@ function GoogleDriveClient(access_token) {
 		}
 	};
 	
+	showStatus('Loading folder list from google drive...');
+	
+	var getStatusDiv=function()
+	{
+		return jQuery('.search-form-status');
+	};
+	var appendStatusHtml=function(h)
+	{
+		var hh = getStatusDiv().html()+h;
+		getStatusDiv().html(hh);
+	};
 	
     var prependToEach=function(valuesToPrepend, originalArray)
     {
@@ -404,11 +416,12 @@ function GoogleDriveClient(access_token) {
 			{
 				//alert('No folder ids were passed in. Please launch from google drive.')
 			}
+			
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
 		
-		showStatus('Loading folder list, please wait...');
+		showStatus("Loading folder list...");
 		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);showStatus(false);},false,q);		
 	};
 	
