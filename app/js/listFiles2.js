@@ -389,6 +389,7 @@ function GoogleDriveClient(access_token) {
 //	var ispageworking = false;
 	var getNextPage = function(r,lastcb)
 	{
+		appendStatusHtml('.');
 		allItemsPages.push(r);
 		if(r.nextLink)
 		{
