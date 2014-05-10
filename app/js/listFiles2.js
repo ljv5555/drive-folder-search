@@ -416,13 +416,13 @@ function GoogleDriveClient(access_token) {
 			{
 				//alert('No folder ids were passed in. Please launch from google drive.')
 			}
-			
+			showStatus(false);
 			//setrv('d',d); jQuery('.r').html(objectArrayToTable(_.flatten(_.map(d,function(i){return i.items;}),true)));
 		};
 		var q = {"q":"mimeType='application/vnd.google-apps.folder' "};
 		
 		showStatus("Loading folder list...");
-		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);showStatus(false);},false,q);		
+		getJSON(driveFilesUrl,function(r){getNextPage(r,lastcb2);appendStatusHtml('.');},false,q);		
 	};
 	
 	
