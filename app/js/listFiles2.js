@@ -514,8 +514,18 @@ function GoogleDriveClient(access_token) {
 	var completeFiltering=function(){
 		jQuery('*[data-folder-filter-result]').hide().has('*[data-item-result]').slideDown();
 		var cnt = jQuery('*[data-folder-filter-result] *[data-item-result]').length;
-		var t1 = jQuery('.infocontent').text()+' '+cnt+' filtered results found.';
-		jQuery('.infocontent').text(t1);
+		var urlidlen = getIdsFromUrl().length;
+		var t1 = jQuery('.infocontent').text()+' ';
+		if(urlidlen==0)
+		{
+			t1 += '<br/>No folders passed in from Google Drive; filtering of un-selected folders and subfolders was skipped.';	
+		}
+		else
+		{
+			t1 += '<br/>'+cnt+' filtered results found.';
+		}
+		jQuery('.infocontent').html(t1);
+		// TODO: fix file result styles and show icons
 		showStatus(false);
 	};
 	
